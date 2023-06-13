@@ -4,12 +4,12 @@ export const useProfileStore = defineStore({
   id: "userProfile",
   state: () => ({
     basic: {
-      username: "shirabako",
-      realname: "yang J. K.",
-      email: "yjkabko@gmail.com",
+      username: "Shawn Qiu",
+      realname: "Qiu Shihao",
+      email: "qiushihao@outlook.com",
       avatar:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwrAiMevuwrbU9o0Ck2paVf4ufHUDb2dU48MEDrAlrQw&s",
-      location: "Tokyo,Japan",
+        "https://avatars.githubusercontent.com/u/114594494?v=4",
+      location: "China,Shanghai",
       role: "Admin",
       disabled: false,
       about: "Full Stack Developer",

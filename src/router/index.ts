@@ -22,7 +22,7 @@ export const routes = [
       requiresAuth: true,
       layout: "landing",
     },
-    component: () => import("@/views/pages/DashBoard.vue"),
+    component: () => import("@/views/pages/KanBan.vue"),
   },
   {
     path: "/:pathMatch(.*)*",

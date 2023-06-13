@@ -72,7 +72,7 @@ const scrollToBottom = () => {
 
     <!-- ---------------------------------------------- -->
     <!---Bottom Area -->
-    <!-- ---------------------------------------------- -->
+    <!-- ---------------------------------------------- 
     <template v-if="!customizeTheme.miniSidebar" v-slot:append>
       <v-card
         theme="dark"
@@ -116,7 +116,7 @@ const scrollToBottom = () => {
           </v-card-actions>
         </v-card>
       </v-card>
-    </template>
+    </template> -->
   </v-navigation-drawer>
 </template>
 
