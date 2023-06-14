@@ -6,6 +6,9 @@ import menuLanding from "./menus/landing.menu";
 import menuData from "./menus/data.menu";
 import menuAi from "./menus/ai.menu";
 
+import menuChatbot from "./menus/chatbot.menu";
+import menuLab from "./menus/lab.menu";
+
 export default {
   menu: [
     {
@@ -20,6 +23,7 @@ export default {
         },
       ],
     },
+    /**
     {
       text: "chatgpt",
       items: menuAi,
@@ -59,5 +63,16 @@ export default {
       key: "menu.charts",
       items: menuCharts,
     },
+   **/
+    {
+        text: "chatbot",
+        items: menuChatbot,
+    },
+    {
+        text: "lab",
+        items: menuLab,
+    },
+
+
   ],
 };

@@ -124,6 +124,7 @@ export default {
     },
     chatbot_v1: "ChatBot",
     chatbot_v2: "Q&A Bot",
+    chatbot_v7: "3GPP Bot",
     voicebot: "VoiceBot",
     imagebot: "ImageBot",
     chartbot: "ChartBot",

@@ -122,6 +122,7 @@ export default {
     },
     chatbot_v1: "聊天助手",
     chatbot_v2: "问答助手",
+    chatbot_v7: "3GPP助手",
     voicebot: "语音对话助手",
     imagebot: "图像助手",
     chartbot: "图表助手",

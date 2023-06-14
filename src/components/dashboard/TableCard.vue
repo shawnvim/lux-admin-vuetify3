@@ -3,7 +3,7 @@ import CopyLabel from "@/components/common/CopyLabel.vue";
 const loading = ref(true);
 
 const headers = [
-  { text: "Order Id", align: "start", value: "id" },
+  { text: "User Id", align: "start", value: "id" },
   {
     text: "User",
     sortable: false,
@@ -11,7 +11,7 @@ const headers = [
   },
   { text: "Date", value: "date" },
   { text: "Company", value: "company" },
-  { text: "Amount", value: "amount" },
+  { text: "Score", value: "score" },
   { text: "Status", value: "status" },
   { text: "", sortable: false, align: "right", value: "action" },
 ];
@@ -25,8 +25,8 @@ const items = [
     },
     date: "2020-05-10",
     company: "BlobHill",
-    amount: 52877,
-    status: "PAID",
+    score: 52877,
+    status: "ONLINE",
   },
   {
     id: "2838",
@@ -37,8 +37,8 @@ const items = [
     },
     date: "2020-05-11",
     company: "Caprimooner",
-    amount: 2123,
-    status: "PENDING",
+    score: 2123,
+    status: "AWAY",
   },
   {
     id: "2839",
@@ -49,8 +49,8 @@ const items = [
     },
     date: "2020-05-11",
     company: "CatLovers",
-    amount: 12313,
-    status: "PENDING",
+    score: 12313,
+    status: "AWAY",
   },
   {
     id: "2840",
@@ -61,8 +61,8 @@ const items = [
     },
     date: "2020-05-12",
     company: "IndieCoolers",
-    amount: 9873,
-    status: "PAID",
+    score: 9873,
+    status: "ONLINE",
   },
   {
     id: "2841",
@@ -73,8 +73,8 @@ const items = [
     },
     date: "2020-05-13",
     company: "CandyLooove",
-    amount: 29573,
-    status: "PAID",
+    score: 29573,
+    status: "ONLINE",
   },
 ];
 
@@ -128,15 +128,15 @@ onMounted(() => {
             </td>
             <td>{{ item.date }}</td>
             <td>{{ item.company }}</td>
-            <td>{{ item.amount }}</td>
+            <td>{{ item.score }}</td>
             <td class="font-weight-bold">
-              <div v-if="item.status === 'PENDING'">
+              <div v-if="item.status === 'AWAY'">
                 <v-icon size="small" color="warning">mdi-circle-medium</v-icon>
-                <span>Pending</span>
+                <span>Away</span>
               </div>
-              <div v-if="item.status === 'PAID'">
+              <div v-if="item.status === 'ONLINE'">
                 <v-icon size="small" color="success">mdi-circle-medium</v-icon>
-                <span>Paid</span>
+                <span>Online</span>
               </div>
             </td>
             <td>

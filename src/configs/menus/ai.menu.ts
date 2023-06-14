@@ -12,6 +12,12 @@ export default [
     link: "/ai/chatbot_v2",
   },
   {
+    icon: "mdi-robot-love-outline",
+    key: "menu.chatbot_v7",
+    text: "Chatbot_V7",
+    link: "/ai/chatbot_v7",
+  },
+  {
     icon: "mdi-robot-happy-outline",
     key: "menu.voicebot",
     text: "Voice Bot",

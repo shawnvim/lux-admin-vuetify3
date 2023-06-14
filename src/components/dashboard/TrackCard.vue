@@ -66,7 +66,7 @@
 const loading = ref(true);
 
 const headers = [
-  { text: "Order Id", align: "start", value: "id" },
+  { text: "User Id", align: "start", value: "id" },
   {
     text: "User",
     sortable: false,
