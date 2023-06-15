@@ -73,6 +73,7 @@ const createCompletion = async () => {
   try {
     // Create a completion (axios is not used here because it does not support streaming)
     const completion = await fetch(
+      // "https://nzygvd-9000.csb.app/v1/chat/completions", //scf-proxy codesandbox.io
       // "https://baixiang.yunrobot.cn/v1/chat/completions",
       "https://api.openai.com/v1/chat/completions",
       {
