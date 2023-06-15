@@ -206,7 +206,7 @@
             <div class="pa-5 assitant-message">
               <div class="message">
                 <v-avatar class="mr-4 mr-lg-8">
-                  <img src="@/assets/images/avatars/avatar_assistant.jpg" alt="alt" />
+                  <img src="@/assets/images/avatars/avatar_assistant2.svg" alt="alt" />
                 </v-avatar>
                 <md-editor v-model="message.content" previewOnly />
               </div>
