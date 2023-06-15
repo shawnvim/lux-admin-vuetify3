@@ -43,6 +43,17 @@ export default [
       title: "TopicsDataTable",
     },
   },
+  // topics Forum Page
+  {
+    path: "/data/topics-forum",
+    component: () => import("@/views/datatable/TopicsForumPage.vue"),
+    meta: {
+      requiresAuth: true,
+      layout: "ui",
+      category: "Data",
+      title: "TopicsForumTable",
+    },
+  },
   // topic Photos Data Page
   {
     path: "/data/topic-photos-data",
@@ -96,6 +107,17 @@ export default [
       layout: "landing",
       category: "Data",
       title: "RichTextEditor",
+    },
+  },
+  // docs viewer
+  {
+    path: "/data/docs-viewer",
+    component: () => import("@/views/datatable/editor/DocsViewer.vue"),
+    meta: {
+      requiresAuth: true,
+      layout: "landing",
+      category: "Data",
+      title: "DocsViewer",
     },
   },
   // edit table
