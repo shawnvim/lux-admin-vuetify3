@@ -100,11 +100,11 @@
           method: "POST",
           body: JSON.stringify({
             messages: requestMessages.value,
-            model: "gpt-3.5-turbo-0613",
+            model: "gpt-3.5-turbo-16k",
             stream: true,
             functions: [{
               "name": "3GPP_5G_Assistent",
-              "description": "Provide context for 3GPP 5G Core Network",
+              "description": "Provide technical specification for 3GPP 5G Core Network",
               "parameters": {
                 "type": "object",
                 "properties": {
