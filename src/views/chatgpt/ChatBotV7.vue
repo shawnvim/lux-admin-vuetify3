@@ -1,157 +1,189 @@
 <!--
-* @Component: 
-* @Maintainer: J.K. Yang
-* @Description: 
+* @Component:
+* @Maintainer: Shawn Qiu
+* @Description:
 -->
 <script setup lang="ts">
-import { useSnackbarStore } from "@/stores/snackbarStore";
-import AnimationAi from "@/components/animations/AnimationBot2.vue";
-import { read, countAndCompleteCodeBlocks } from "@/utils/aiUtils";
-import MdEditor from "md-editor-v3";
-import "md-editor-v3/lib/style.css";
-import { scrollToBottom } from "@/utils/common";
-import { useChatGPTStore } from "@/stores/chatGPTStore";
-import ApiKeyDialog from "@/components/ApiKeyDialog.vue";
-const snackbarStore = useSnackbarStore();
-const chatGPTStore = useChatGPTStore();
+  import { useSnackbarStore } from "@/stores/snackbarStore";
+  import AnimationAi from "@/components/animations/AnimationBot2.vue";
+  import { read, countAndCompleteCodeBlocks } from "@/utils/aiUtils";
+  import MdEditor from "md-editor-v3";
+  import "md-editor-v3/lib/style.css";
+  import { scrollToBottom } from "@/utils/common";
+  import { useChatGPTStore } from "@/stores/chatGPTStore";
+  import ApiKeyDialog from "@/components/ApiKeyDialog.vue";
+  import { client } from "@gradio/client";
 
-interface Message {
-  content: string;
-  role: "user" | "assistant" | "system";
-}
+  const snackbarStore = useSnackbarStore();
+  const chatGPTStore = useChatGPTStore();
 
-// User Input Message
-const userMessage = ref("");
-
-// Prompt Message
-const promptMessage = computed(() => {
-  return [
-    {
-      content: chatGPTStore.propmpt,
-      role: "system",
-    },
-  ];
-});
-
-// Message List
-const messages = ref<Message[]>([]);
-
-const requestMessages = computed(() => {
-  if (messages.value.length <= 10) {
-    return [...promptMessage.value, ...messages.value];
-  } else {
-    // 截取最新的10条信息
-    const slicedMessages = messages.value.slice(-10);
-    return [...promptMessage.value, ...slicedMessages];
+  interface Message {
+    content : string;
+    role : "user" | "assistant" | "system" | "function";
   }
-});
 
-// Send Messsage
-const sendMessage = async () => {
-  if (userMessage.value) {
-    // Add the message to the list
-    messages.value.push({
-      content: userMessage.value,
-      role: "user",
-    });
+  // User Input Message
+  const userMessage = ref("");
 
-    // Clear the input
-    userMessage.value = "";
-
-    // Create a completion
-    await createCompletion();
-  }
-};
-
-const createCompletion = async () => {
-  // Check if the API key is set
-  // if (!chatGPTStore.getApiKey) {
-  //   snackbarStore.showErrorMessage("请先输入API KEY");
-  //   return;
-  // }
-
-  try {
-    // Create a completion (axios is not used here because it does not support streaming)
-    const completion = await fetch(
-      "https://baixiang.yunrobot.cn/v1/chat/completions",
-      // "https://api.openai.com/v1/chat/completions",
+  // Prompt Message
+  const promptMessage = computed(() => {
+    return [
       {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${chatGPTStore.getApiKey}`,
-        },
-        method: "POST",
-        body: JSON.stringify({
-          messages: requestMessages.value,
-          model: "gpt-3.5-turbo",
-          stream: true,
-        }),
-      }
-    );
+        content: "",
+        role: "system",
+      },
+    ];
+  });
 
-    // Handle errors
-    if (!completion.ok) {
-      const errorData = await completion.json();
-      snackbarStore.showErrorMessage(errorData.error.message);
+  // Message List
+  const messages = ref<Message[]>([]);
 
-      return;
+  const requestMessages = computed(() => {
+    if (messages.value.length <= 2) {
+      return [...promptMessage.value, ...messages.value];
+    } else {
+      // 截取最新的10条信息
+      const slicedMessages = messages.value.slice(-2);
+      return [...promptMessage.value, ...slicedMessages];
+    }
+  });
+
+  // Send Messsage
+  const sendMessage = async () => {
+    if (userMessage.value) {
+      // Add the message to the list
+      messages.value.push({
+        content: userMessage.value,
+        role: "user",
+      });
+
+      let keywords = userMessage.value;
+      // Clear the input
+      userMessage.value = "";
+
+      const app = await client("https://shawnai-vectordb.hf.space/");
+      const result = await app.predict(1, [keywords,10,0.33]);
+      const context = result?.data;
+
+      messages.value.push({
+        name: "3GPP_5G_Assistent",
+        content: `Context ${context}`,
+        role: "function",
+      });
+
+      // Create a completion
+      await createCompletion();
+    }
+    else {
+      messages.value = [];
     }
 
-    // Create a reader
-    const reader = completion.body?.getReader();
-    if (!reader) {
-      snackbarStore.showErrorMessage("Cannot read the stream.");
-    }
-
-    // Add the bot message
-    messages.value.push({
-      content: "",
-      role: "assistant",
-    });
-
-    // Read the stream
-    read(reader, messages);
-  } catch (error) {
-    snackbarStore.showErrorMessage(error.message);
-  }
-};
-
-watch(
-  () => messages.value,
-  (val) => {
-    if (val) {
-      scrollToBottom(document.querySelector(".message-container"));
-    }
-  },
-  {
-    deep: true,
-  }
-);
-
-const displayMessages = computed(() => {
-  const messagesCopy = messages.value.slice(); // 创建原始数组的副本
-  const lastMessage = messagesCopy[messagesCopy.length - 1];
-  const updatedLastMessage = {
-    ...lastMessage,
-    content: countAndCompleteCodeBlocks(lastMessage.content),
   };
-  messagesCopy[messagesCopy.length - 1] = updatedLastMessage;
-  return messagesCopy;
-});
 
-const handleKeydown = (e) => {
-  if (e.key === "Enter" && (e.altKey || e.shiftKey)) {
-    // 当同时按下 alt或者shift 和 enter 时，插入一个换行符
-    e.preventDefault();
-    userMessage.value += "\n";
-  } else if (e.key === "Enter") {
-    // 当只按下 enter 时，发送消息
-    e.preventDefault();
-    sendMessage();
-  }
-};
+  const createCompletion = async () => {
+    // Check if the API key is set
+    // if (!chatGPTStore.getApiKey) {
+    //   snackbarStore.showErrorMessage("请先输入API KEY");
+    //   return;
+    // }
 
-const inputRow = ref(1);
+    try {
+      // Create a completion (axios is not used here because it does not support streaming)
+      const completion = await fetch(
+        // "https://baixiang.yunrobot.cn/v1/chat/completions",
+        "https://api.openai.com/v1/chat/completions",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${chatGPTStore.getApiKey}`,
+          },
+          method: "POST",
+          body: JSON.stringify({
+            messages: requestMessages.value,
+            model: "gpt-3.5-turbo-0613",
+            stream: true,
+            functions: [{
+              "name": "3GPP_5G_Assistent",
+              "description": "Provide context for 3GPP 5G Core Network",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "description": "The related text chunks of question",
+                  },
+                },
+                "required": ["query"],
+              },
+            }],
+          }),
+        }
+      );
+      // console.log({completion});
+
+      // Handle errors
+      if (!completion.ok) {
+        const errorData = await completion.json();
+        snackbarStore.showErrorMessage(errorData.error.message);
+
+        return;
+      }
+
+      // Create a reader
+      const reader = completion.body?.getReader();
+      if (!reader) {
+        snackbarStore.showErrorMessage("Cannot read the stream.");
+      }
+
+      // Add the bot message
+      messages.value.push({
+        content: "",
+        role: "assistant",
+      });
+
+      // Read the stream
+      read(reader, messages);
+    } catch (error) {
+      snackbarStore.showErrorMessage(error.message);
+    }
+  };
+
+  watch(
+    () => messages.value,
+    (val) => {
+      if (val) {
+        scrollToBottom(document.querySelector(".message-container"));
+      }
+    },
+    {
+      deep: true,
+    }
+  );
+
+  const displayMessages = computed(() => {
+    const messagesCopy = messages.value.slice(); // 创建原始数组的副本
+    const lastMessage = messagesCopy[messagesCopy.length - 1];
+    const updatedLastMessage = {
+      ...lastMessage,
+      content: countAndCompleteCodeBlocks(lastMessage.content),
+    };
+    messagesCopy[messagesCopy.length - 1] = updatedLastMessage;
+    return messagesCopy;
+  });
+
+  const handleKeydown = (e) => {
+    if (e.key === "Enter" && (e.altKey || e.shiftKey)) {
+      // 当同时按下 alt或者shift 和 enter 时，插入一个换行符
+      e.preventDefault();
+      userMessage.value += "\n";
+    } else if (e.key === "Enter") {
+      // 当只按下 enter 时，发送消息
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
+  const inputRow = ref(1);
 </script>
 
 <template>
@@ -169,6 +201,7 @@ const inputRow = ref(1);
               </div>
             </div>
           </div>
+          <div v-else-if="message.role === 'function'"></div>
           <div v-else>
             <div class="pa-5 assitant-message">
               <div class="message">
@@ -210,68 +243,68 @@ const inputRow = ref(1);
 </template>
 
 <style scoped lang="scss">
-.chat-bot {
-  background-color: #fcfcfe;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  .chat-bot {
+    background-color: #fcfcfe;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 
-  .messsage-area {
-    flex: 1;
-  }
+    .messsage-area {
+      flex: 1;
+    }
 
-  .input-area {
-    padding: 1rem;
+    .input-area {
+      padding: 1rem;
 
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+      align-items: center;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
 
-    .input-panel {
-      border-radius: 5px;
-      max-width: 1200px;
-      margin: 0 auto;
+      .input-panel {
+        border-radius: 5px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
     }
   }
-}
 
-.user-message {
-  background-color: #f6f6fd;
-  border-top: 1px solid #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.assitant-message {
-  background-color: #fff;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.message {
-  margin: 0 auto;
-  max-width: 1200px;
-  display: flex;
-}
-
-.message-container {
-  height: calc(100vh - 154px);
-}
-
-.no-message-container {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  h1 {
-    font-size: 2rem;
-    font-weight: 500;
+  .user-message {
+    background-color: #f6f6fd;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
   }
-}
 
-:deep(.md-editor-preview-wrapper) {
-  padding: 0px;
-}
+  .assitant-message {
+    background-color: #fff;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .message {
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+  }
+
+  .message-container {
+    height: calc(100vh - 154px);
+  }
+
+  .no-message-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 500;
+    }
+  }
+
+  :deep(.md-editor-preview-wrapper) {
+    padding: 0px;
+  }
 </style>
