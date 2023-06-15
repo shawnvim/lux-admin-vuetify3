@@ -173,7 +173,7 @@ const inputRow = ref(1);
             <div class="pa-5 assitant-message">
               <div class="message">
                 <v-avatar class="mr-4 mr-lg-8">
-                  <img src="@/assets/images/avatars/avatar_assistant1.svg" alt="alt" />
+                  <img src="@/assets/images/avatars/avatar_assistant1.jpg" alt="alt" />
                 </v-avatar>
                 <md-editor v-model="message.content" previewOnly />
               </div>
