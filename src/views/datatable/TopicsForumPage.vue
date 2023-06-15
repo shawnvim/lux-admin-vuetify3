@@ -1,7 +1,7 @@
 <!--
-* @Component: 
-* @Maintainer: J.K. Yang
-* @Description: 
+* @Component:
+* @Maintainer: Shawn Qiu
+* @Description:
 -->
 <script setup lang="ts">
 import { getTopicsApi } from "@/api/unsplashApi";
@@ -20,9 +20,6 @@ const queryOptions = reactive({
 const headers = [
   { title: "ID", key: "id" },
   { title: "Title", key: "title" },
-  { title: "Cover", key: "cover_photo", align: "center" },
-  { title: "Preview", key: "preview_photos", align: "center" },
-  { title: "Photos", key: "total_photos", align: "center" },
   { title: "Description", key: "description", width: "500px" },
 
   { title: "Link", key: "links" },
@@ -73,7 +70,7 @@ const previewImg = (url) => {
   <v-container>
     <v-card>
       <v-card-title class="font-weight-bold">
-        <span> Unsplash Forum Topics</span>
+        <span>Unsplash Forum Topics</span>
         <v-spacer></v-spacer>
 
         <div class="w-25">
@@ -108,35 +105,8 @@ const previewImg = (url) => {
             <tr>
               <td class="font-weight-bold">#{{ item.columns.id }}</td>
               <td class="font-weight-bold">{{ item.columns.title }}</td>
-              <td class="pa-2">
-                <v-img
-                  :src="item.columns.cover_photo.urls.thumb"
-                  height="100"
-                  width="160"
-                  cover
-                  class="rounded-lg v-card--link"
-                  @click="previewImg(item.columns.cover_photo.urls.regular)"
-                />
-              </td>
-              <td>
-                <div class="d-flex align-center">
-                  <v-img
-                    v-for="photo in item.columns.preview_photos"
-                    :key="photo.id"
-                    :src="photo.urls.thumb"
-                    height="100"
-                    width="60"
-                    cover
-                    class="mr-2 rounded-lg v-card--link"
-                    @click="previewImg(photo.urls.regular)"
-                  />
-                </div>
-              </td>
-              <td class="text-center">
-                <v-chip size="small">
-                  {{ item.columns.total_photos }}
-                </v-chip>
-              </td>
+
+
               <td>{{ item.columns.description }}</td>
 
               <td>
