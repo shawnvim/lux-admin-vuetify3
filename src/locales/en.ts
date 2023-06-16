@@ -175,6 +175,8 @@ export default {
       title: "ChatGPT Config",
       apikey: "API Key",
       apikeyPlaceholder: "If not input , the ApiKey in the .env will be used.",
+      url: "API Url",
+      urlPlaceholder: "If not input , 'https://api.openai.com' will be used.",
       model: "Model",
       role: "Role",
     },
