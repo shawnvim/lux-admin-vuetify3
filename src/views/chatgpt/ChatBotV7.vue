@@ -25,6 +25,9 @@
   // User Input Message
   const userMessage = ref("");
 
+  // top_k for DB retrieve
+  const top_k = ref(15);
+
   // Prompt Message
   const promptMessage = computed(() => {
     return [
@@ -62,7 +65,7 @@
       userMessage.value = "";
 
       const app = await client("https://shawnai-vectordb.hf.space/");
-      const result = await app.predict(1, [keywords,10,0.33]);
+      const result = await app.predict(1, [keywords, top_k.value, 0.33]);
       const context = result?.data;
 
       messages.value.push({
@@ -225,6 +228,13 @@
     </div>
     <div class="input-area">
       <v-sheet elevation="0" class="input-panel d-flex align-end pa-1" max-width="1200">
+        <v-menu transition="scroll-x-transition">
+          <template v-slot:activator="{ props }">
+            <v-btn class="mb-1" variant="elevated" icon v-bind="props">D</v-btn>
+          </template>
+          <v-slider v-model="top_k" thumb-label="always" direction='vertical' :min="1" :max="30" :step="1"
+            hide-details></v-slider>
+        </v-menu>
         <v-btn class="mb-1" variant="elevated" icon @click="chatGPTStore.configDialog = true">
           <v-icon size="30" class="text-primary">mdi-cog-outline</v-icon>
           <v-tooltip activator="parent" location="top" text="ChatGPT Config"></v-tooltip>
