@@ -6,6 +6,7 @@ export const useChatGPTStore = defineStore({
     propmpt: "",
     configDialog: false,
     apiKey: "",
+    url: "",
     model: "gpt-3.5-turbo",
   }),
 
@@ -18,6 +19,7 @@ export const useChatGPTStore = defineStore({
     // If you have set up an API key, please use your own key. If not, please use the one I provided.
     // getApiKey: (state) => state.apiKey || import.meta.env.VITE_OPENAI_API_KEY,
     getApiKey: (state) => state.apiKey,
+    getUrl: (state) => state.url || "https://api.openai.com",
   },
   actions: {
     updatePropmpt() {},
