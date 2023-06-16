@@ -60,6 +60,24 @@ const promptList = computed(() => {
         ></v-text-field>
 
         <!-- ---------------------------------------------- -->
+        <!-- URL -->
+        <!-- ---------------------------------------------- -->
+        <v-label class="font-weight-medium mb-2 ml-2 mt-5">{{
+          $t("chatgpt.config.url")
+        }}</v-label>
+        <v-text-field
+          color="primary"
+          variant="outlined"
+          v-model="chatGPTStore.url"
+          class="px-2 py-1"
+          :placeholder="$t('chatgpt.config.urlPlaceholder')"
+          prepend-inner-icon="mdi-key"
+          autofocus
+          clearable
+          hide-details
+        ></v-text-field>
+
+        <!-- ---------------------------------------------- -->
         <!-- Model -->
         <!-- ---------------------------------------------- -->
         <v-label class="font-weight-medium mb-2 ml-2 mt-5">{{
