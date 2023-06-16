@@ -258,7 +258,7 @@ const inputRow = ref(1);
 }
 
 .message-container {
-  height: calc(100vh - 154px);
+  height: calc(100vh - 180px);
 }
 
 .no-message-container {
