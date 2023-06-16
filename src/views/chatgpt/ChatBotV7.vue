@@ -300,7 +300,7 @@
   }
 
   .message-container {
-    height: calc(100vh - 154px);
+    height: calc(100vh - 180px);
   }
 
   .no-message-container {
