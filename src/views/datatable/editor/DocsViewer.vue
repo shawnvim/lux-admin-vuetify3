@@ -7,9 +7,11 @@
 <script>
   import axios from "axios";
   export default {
+
     data() {
       return {
         tocItems: [],
+        rail: true,
         iframeSrc: '/23.501/html/index.html',
 
         fileOptions: [{
@@ -26,6 +28,20 @@
         ],
 
       };
+    },
+
+    mounted() {
+      let that = this;
+      var iframe = document.getElementById('iframe-id');
+      iframe.onload = function() {
+        iframe.contentDocument.onclick = function() {
+          that.rail = true
+        };
+        iframe.contentDocument.onscroll = function() {
+          // alert('scrolled')
+        };
+      };
+
     },
 
     methods: {
@@ -68,6 +84,10 @@
         ${heading.title}</a>`;
       },
 
+      onClickOutside() {
+        this.rail = true
+      },
+
       handleIframeScroll() {
         alert(2)
         const iframe = this.$refs.iframe.$el;
@@ -97,6 +117,7 @@
 
 <template>
   <v-container>
+    <div v-html="htmlContent"></div>
     <v-row>
       <v-col>
         <v-card-title>
@@ -107,26 +128,29 @@
         </v-card-title>
         <v-card min-height="90vh">
           <v-layout>
+            <v-navigation-drawer :rail="rail" rail-width=49 width='24vw' permanent>
 
-            <v-navigation-drawer expand-on-hover rail rail-width=45 width='30vh' permanent>
+
               <div class="toc">
-                <!-- <h2>Table of Contents</h2> -->
-                <v-divider></v-divider>
+                <v-card v-click-outside="onClickOutside" @click="rail = false">
 
-                <v-list-item v-for="item in tocItems" :key="item.id" link=true variant='flat' density='compact'>
-                  <v-layout row>
-                    <v-icon start icon="$vuetify" :size="(1/item.tag+0.5)*15"></v-icon>
-                    <div v-html="hrefToHeading(item)"></div>
-                  </v-layout>
-                </v-list-item>
+                  <!-- <h2>Table of Contents</h2> -->
 
+
+                  <v-list-item v-for="item in tocItems" :key="item.id" link=true variant='flat' density='compact'>
+                    <v-layout row>
+                      <v-icon start icon="$vuetify" :size="(1/item.tag+0.5)*15"></v-icon>
+                      <div v-html="hrefToHeading(item)"></div>
+                    </v-layout>
+                  </v-list-item>
+                </v-card>
               </div>
+
             </v-navigation-drawer>
 
-            <v-main style="height: 90vh">
+            <v-main style="height: 90vh;">
 
-
-              <iframe name="3gppiframe" ref="iframe" frameborder="0" :src="iframeSrc" scrolling="yes"
+              <iframe name="3gppiframe" ref="iframe" id="iframe-id" frameborder="0" :src="iframeSrc" scrolling="yes"
                 @load="handleIframeLoad">
 
               </iframe>
@@ -147,14 +171,16 @@
     overflow-y: scroll;
     top: 0;
     left: 0;
-    width: 25vw;
+    width: 24vw;
     padding: 0px;
   }
 
   iframe {
     top: 0;
-    margin-left: 7ch;
-    width: calc(100% - 7ch);
+    left: 0;
+    position: absolute;
+    margin-left: 10ch;
+    width: calc(100% - 10ch);
     height: 100%;
   }
 </style>
