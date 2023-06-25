@@ -70,7 +70,7 @@
 
       messages.value.push({
         name: "3GPP_5G_Assistent",
-        content: `Context ${context}`,
+        content: `${context}`,
         role: "function",
       });
 
