@@ -49,7 +49,7 @@
             this.tocItems.push({
               id: clauseId,
               title: clauseName,
-              tag: heading.tagName.toLowerCase()
+              tag: parseInt(heading.tagName.toLowerCase()[1]) // h1 -> 1
             });
           }
 
@@ -59,12 +59,12 @@
       hrefToHeading(heading) {
         const iframe = this.$refs.iframe;
         const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-        const iframeSrc = iframeDocument.location.src;
+        const iframeSrc = iframeDocument.location.href.split("#").shift();
 
-        const iframeHref = `${this.$refs.iframe.contentDocument.location.href}#_REF__CLA__${heading.id}`;
+        const iframeHref = `${iframeSrc}#_REF__CLA__${heading.id}`;
 
         return `<a href="${iframeHref}" target = "3gppiframe"
-        style="padding-left: ${heading.tag[1]*10}px;">
+        style="padding-left: ${heading.tag-1}ch; float:left;">
         ${heading.title}</a>`;
       },
 
@@ -101,28 +101,34 @@
       <v-col>
         <v-card-title>
           <h2 class="font-weight-bold pa-3">3GPP Technical Specification</h2>
-          <v-select variant="outlined" placeholder="File Directory"
-          label="Select TS" density="compact" hide-details
+          <v-select variant="outlined" placeholder="File Directory" label="Select TS" density="compact" hide-details
             :items="fileOptions" item-title="name" item-value="path" v-model="iframeSrc">
           </v-select>
         </v-card-title>
         <v-card min-height="90vh">
-          <v-card-text>
-            <div>
+          <v-layout>
+            <v-navigation-drawer expand-on-hover rail rail-width=45 width='30vh' permanent>
               <div class="toc" style="float:left;">
                 <!-- <h2>Table of Contents</h2> -->
                 <v-divider></v-divider>
-                <ul>
-                  <li v-for="item in tocItems" :key="item.id">
+                <v-list-item v-for="item in tocItems" :key="item.id" link=true variant='flat' density='compact'>
+                  <v-layout row>
+                    <v-icon start icon="$vuetify" :size="(1/item.tag+0.5)*15"></v-icon>
                     <div v-html="hrefToHeading(item)"></div>
-                  </li>
-                </ul>
+                  </v-layout>
+                </v-list-item>
               </div>
+            </v-navigation-drawer>
+            <v-main style="height: 90vh">
+
+
               <iframe name="3gppiframe" ref="iframe" frameborder="0" :src="iframeSrc" scrolling="yes"
-                @load="handleIframeLoad" @v-scroll="handleIframeScroll">
+                @load="handleIframeLoad">
+
               </iframe>
-            </div>
-          </v-card-text>
+
+            </v-main>
+          </v-layout>
         </v-card>
       </v-col>
     </v-row>
@@ -132,19 +138,19 @@
 <style scoped>
   .toc {
     position: sticky;
-    height: 87vh;
+    height: 90vh;
     overflow: auto;
     top: 0;
     left: 0;
-    width: 20vw;
-    padding: 5px;
+    width: 25vw;
+    padding: 0px;
   }
 
   iframe {
     top: 0;
-    margin-left: 20vw;
-    width: calc(100% - 20vw);
-    height: 87vh;
+    margin-left: 4ch;
+    width: calc(100% - 4ch);
+    height: 100%;
   }
 </style>
 
