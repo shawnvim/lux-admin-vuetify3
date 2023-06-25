@@ -64,7 +64,7 @@
         const iframeHref = `${iframeSrc}#_REF__CLA__${heading.id}`;
 
         return `<a href="${iframeHref}" target = "3gppiframe"
-        style="padding-left: ${heading.tag-1}ch; float:left;">
+        style="padding-left: ${heading.tag}ch; float:left;">
         ${heading.title}</a>`;
       },
 
@@ -107,18 +107,22 @@
         </v-card-title>
         <v-card min-height="90vh">
           <v-layout>
+
             <v-navigation-drawer expand-on-hover rail rail-width=45 width='30vh' permanent>
-              <div class="toc" style="float:left;">
+              <div class="toc">
                 <!-- <h2>Table of Contents</h2> -->
                 <v-divider></v-divider>
+
                 <v-list-item v-for="item in tocItems" :key="item.id" link=true variant='flat' density='compact'>
                   <v-layout row>
                     <v-icon start icon="$vuetify" :size="(1/item.tag+0.5)*15"></v-icon>
                     <div v-html="hrefToHeading(item)"></div>
                   </v-layout>
                 </v-list-item>
+
               </div>
             </v-navigation-drawer>
+
             <v-main style="height: 90vh">
 
 
@@ -137,9 +141,10 @@
 
 <style scoped>
   .toc {
+    float: left;
     position: sticky;
     height: 90vh;
-    overflow: auto;
+    overflow-y: scroll;
     top: 0;
     left: 0;
     width: 25vw;
@@ -148,13 +153,18 @@
 
   iframe {
     top: 0;
-    margin-left: 4ch;
-    width: calc(100% - 4ch);
+    margin-left: 7ch;
+    width: calc(100% - 7ch);
     height: 100%;
   }
 </style>
 
-
+<style scoped lang="scss">
+  ::-webkit-scrollbar {
+    width: 15px;
+    background-color: #f5f5f5;
+  }
+</style>
 
 // onload="this.height=this.contentWindow.document.body.scrollHeight"
 /**
