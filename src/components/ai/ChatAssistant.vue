@@ -38,7 +38,7 @@ const { xs } = useDisplay();
               />
             </v-avatar>
 
-            OpenAi Chat
+            Chat Assistant
           </span>
 
           <v-spacer></v-spacer>
