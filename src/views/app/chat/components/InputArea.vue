@@ -27,14 +27,14 @@ const user = ref({
   id: 1,
   name: "YOU",
   avatar:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvG_dOM4nJ0Jx_Eu0cOfqweC7cuDsjw9u5um-ClOM&s",
+    "https://avatars.githubusercontent.com/u/114594494?v=4",
 });
 
 const bot = ref({
   id: 2,
   name: "AI",
   avatar:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwrAiMevuwrbU9o0Ck2paVf4ufHUDb2dU48MEDrAlrQw&s",
+    "https://www.3gpp.org/images/3gpp_logo.svg",
 });
 
 const emits = defineEmits(["scroll"]);
