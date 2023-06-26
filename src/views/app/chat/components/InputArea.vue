@@ -41,7 +41,10 @@ const emits = defineEmits(["scroll"]);
 
 const sendMessage = () => {
   // 判断是否为空
-  if (!userMessage.value) return;
+  if (!userMessage.value) {
+    chatStore.clearHistory();
+    return;
+  }
 
   // 判断ApiKey是否为空
   if (!chatGPTStore.getApiKey) {
@@ -53,6 +56,8 @@ const sendMessage = () => {
   // 发送User Message
   chatStore.addToHistory(createMessage(user.value, userMessage.value));
 
+  let inputmsg = `Context:\n${chatGPTStore.getContext}\nQuestion:\n${userMessage.value}`
+
   // 清空Input
   userMessage.value = "";
 
@@ -61,13 +66,13 @@ const sendMessage = () => {
   chatStore.addToHistory(createMessage(bot.value, aiMessage.value));
 
   // 请求AI回答
-  getCompletion();
+  getCompletion(inputmsg);
 };
 
-const getCompletion = async () => {
+const getCompletion = async (inputmsg) => {
   try {
     const response = await createCompletion(
-      userMessage.value,
+      inputmsg,
       chatGPTStore.getApiKey
     );
 
