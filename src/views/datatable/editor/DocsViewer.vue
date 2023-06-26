@@ -6,6 +6,10 @@
 
 <script>
   import axios from "axios";
+  import { useChatGPTStore } from "@/stores/chatGPTStore";
+  
+  const chatGPTStore = useChatGPTStore();
+  
   export default {
 
     data() {
@@ -32,6 +36,7 @@
 
     mounted() {
       let that = this;
+      let x, y;
       var iframe = document.getElementById('iframe-id');
       iframe.onload = function() {
         iframe.contentDocument.onclick = function() {
@@ -39,6 +44,21 @@
         };
         iframe.contentDocument.onscroll = function() {
           // alert('scrolled')
+        };
+        iframe.contentDocument.onmousedown = function(event) {
+          x = event.pageX;
+          y = event.pagey;
+
+        };
+        iframe.contentDocument.onmouseup = function(event) {
+          if (x == event.pageX && y == event.pagey) {
+            //执行点击事件操作
+          } else {
+            chatGPTStore.updateContext(iframe.contentDocument.getSelection().toString());
+            //alert(chatGPTStore.getContext)
+            // 选中操作
+            // alert(iframe.contentDocument.getSelection().toString())
+          }
         };
       };
 
