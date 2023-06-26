@@ -47,7 +47,7 @@ const { xs } = useDisplay();
           </v-btn>
         </v-card-title>
         <v-divider />
-        <v-card-text class="overflow-scroll">
+        <v-card-text style="overflow-y: scroll;">
           <MessageArea />
         </v-card-text>
         <v-divider />
