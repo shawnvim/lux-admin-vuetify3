@@ -66,7 +66,8 @@ const copyText = (text: string, event: Event) => {
 
 <style scoped lang="scss">
 .text {
-  white-space:pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: normal;
   cursor: pointer;
   display: inline-block;
   border-bottom: 1px dashed;
