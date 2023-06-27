@@ -7,15 +7,17 @@
 <script>
   import axios from "axios";
   import { useChatGPTStore } from "@/stores/chatGPTStore";
-  
+
   const chatGPTStore = useChatGPTStore();
-  
+
   export default {
 
     data() {
       return {
         tocItems: [],
         rail: true,
+        searchKey: "",
+
         iframeSrc: '/23.501/html/index.html',
 
         fileOptions: [{
@@ -26,7 +28,6 @@
             name: "23502",
             path: "/23.502/html/index.html"
           },
-
 
           // Add more file options as needed
         ],
@@ -64,6 +65,15 @@
 
     },
 
+    computed:{
+      filterdTodoList() {
+        if (this.searchKey == "") return this.tocItems;
+        return this.tocItems.filter((todo) => {
+          return todo.title.toLowerCase().includes(this.searchKey.toLowerCase());
+        });
+      },
+    },
+
     methods: {
       handleIframeLoad() {
         // Access iframe content
@@ -71,7 +81,7 @@
         const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
 
         // Extract headings from iframe content
-        const headings = Array.from(iframeDocument.querySelectorAll('h1, h2, h3'));
+        const headings = Array.from(iframeDocument.querySelectorAll('h1, h2, h3, h4'));
 
         const regexPattern = /^\d[\d.a-zA-Z]*/;
 
@@ -148,24 +158,20 @@
         </v-card-title>
         <v-card min-height="90vh">
           <v-layout>
-            <v-navigation-drawer :rail="rail" rail-width=49 width='24vw' permanent>
-
-
-              <div class="toc">
-                <v-card v-click-outside="onClickOutside" @click="rail = false">
-
+            <v-navigation-drawer :rail="rail" rail-width=70 width='24vw' permanent>
+              <v-card :ripple="false" @click="rail = false" v-click-outside="onClickOutside">
+                <v-text-field variant="solo" class="elevation-1 ma-3" hide-details
+                  placeholder="Filter Headings" v-model="searchKey" @click="rail = false"></v-text-field>
+                <div class="toc">
                   <!-- <h2>Table of Contents</h2> -->
-
-
-                  <v-list-item v-for="item in tocItems" :key="item.id" link=true variant='flat' density='compact'>
+                  <v-list-item v-for="item in filterdTodoList" :key="item.id" link=true variant='flat' density='compact'>
                     <v-layout row>
-                      <v-icon start icon="$vuetify" :size="(1/item.tag+0.5)*15"></v-icon>
-                      <div v-html="hrefToHeading(item)"></div>
+                      <v-icon style="margin-left:5px;" start icon="$vuetify" :size="(1/item.tag+0.5)*15"></v-icon>
+                      <div style="position: relative; padding-left: 20px;" v-html="hrefToHeading(item)"></div>
                     </v-layout>
                   </v-list-item>
-                </v-card>
-              </div>
-
+                </div>
+              </v-card>
             </v-navigation-drawer>
 
             <v-main style="height: 90vh;">
@@ -186,10 +192,9 @@
 <style scoped>
   .toc {
     float: left;
-    position: sticky;
-    height: 90vh;
+    position: relative;
+    height: calc(90vh - 9ch);
     overflow-y: scroll;
-    top: 0;
     left: 0;
     width: 24vw;
     padding: 0px;
@@ -199,8 +204,8 @@
     top: 0;
     left: 0;
     position: absolute;
-    margin-left: 10ch;
-    width: calc(100% - 10ch);
+    margin-left: 12ch;
+    width: calc(100% - 12ch);
     height: 100%;
   }
 </style>
