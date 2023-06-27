@@ -157,7 +157,7 @@
             :items="fileOptions" item-title="name" item-value="path" v-model="iframeSrc">
           </v-select>
         </v-card-title>
-        <v-card min-height="90vh">
+        <v-card height="90vh">
           <v-layout>
             <v-navigation-drawer :rail="rail" rail-width=93 width='27vw' min-width='30em' permanent>
               <v-card :ripple="false" @click="rail = false" v-click-outside="onClickOutside">
@@ -168,7 +168,7 @@
                   <v-list-item v-for="item in filterdTodoList" :key="item.id"
                   link=true variant='flat' density='compact'>
                     <template v-slot:prepend>
-                      <v-avatar density='compact' style="width: 4em">
+                      <v-avatar density='compact' style="width: 4em" size='small'>
                         {{ item.id.toString() }}
                       </v-avatar>
                     </template>
@@ -194,8 +194,8 @@
   .toc {
     float: left;
     position: relative;
-    height: calc(90vh - 9ch);
-    overflow-y: scroll;
+    height: calc(90vh - 68px);
+    overflow-y: auto;
     left: 0;
     width: 27vw;
     min-width: 30em;
