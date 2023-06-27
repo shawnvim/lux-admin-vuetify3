@@ -95,6 +95,7 @@
             this.tocItems.push({
               id: clauseId,
               title: clauseName,
+              text: clauseName.split(/\s+/).slice(1).join(' '),
               tag: parseInt(heading.tagName.toLowerCase()[1]) // h1 -> 1
             });
           }
@@ -110,8 +111,8 @@
         const iframeHref = `${iframeSrc}#_REF__CLA__${heading.id}`;
 
         return `<a href="${iframeHref}" target = "3gppiframe"
-        style="padding-left: ${heading.tag}ch; float:left;">
-        ${heading.title}</a>`;
+        >
+        ${heading.text}</a>`;
       },
 
       onClickOutside() {
@@ -158,29 +159,29 @@
         </v-card-title>
         <v-card min-height="90vh">
           <v-layout>
-            <v-navigation-drawer :rail="rail" rail-width=70 width='24vw' permanent>
+            <v-navigation-drawer :rail="rail" rail-width=93 width='27vw' min-width='30em' permanent>
               <v-card :ripple="false" @click="rail = false" v-click-outside="onClickOutside">
-                <v-text-field variant="solo" class="elevation-1 ma-3" hide-details
+                <v-text-field density='compact' variant="solo" class="elevation-1 ma-3" hide-details
                   placeholder="Filter Headings" v-model="searchKey" @click="rail = false"></v-text-field>
                 <div class="toc">
                   <!-- <h2>Table of Contents</h2> -->
-                  <v-list-item v-for="item in filterdTodoList" :key="item.id" link=true variant='flat' density='compact'>
-                    <v-layout row>
-                      <v-icon style="margin-left:5px;" start icon="$vuetify" :size="(1/item.tag+0.5)*15"></v-icon>
-                      <div style="position: relative; padding-left: 20px;" v-html="hrefToHeading(item)"></div>
-                    </v-layout>
+                  <v-list-item v-for="item in filterdTodoList" :key="item.id"
+                  link=true variant='flat' density='compact'>
+                    <template v-slot:prepend>
+                      <v-avatar density='compact' style="width: 4em">
+                        {{ item.id.toString() }}
+                      </v-avatar>
+                    </template>
+                    <div v-html="hrefToHeading(item)"></div>
                   </v-list-item>
                 </div>
               </v-card>
             </v-navigation-drawer>
 
             <v-main style="height: 90vh;">
-
               <iframe name="3gppiframe" ref="iframe" id="iframe-id" frameborder="0" :src="iframeSrc" scrolling="yes"
                 @load="handleIframeLoad">
-
               </iframe>
-
             </v-main>
           </v-layout>
         </v-card>
@@ -196,7 +197,8 @@
     height: calc(90vh - 9ch);
     overflow-y: scroll;
     left: 0;
-    width: 24vw;
+    width: 27vw;
+    min-width: 30em;
     padding: 0px;
   }
 
@@ -204,8 +206,8 @@
     top: 0;
     left: 0;
     position: absolute;
-    margin-left: 12ch;
-    width: calc(100% - 12ch);
+    margin-left: 15ch;
+    width: calc(100% - 15ch);
     height: 100%;
   }
 </style>
