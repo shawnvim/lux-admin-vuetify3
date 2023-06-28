@@ -20,13 +20,78 @@
 
         iframeSrc: '/23.501/html/index.html',
 
-        fileOptions: [{
-            name: "23501",
+        fileOptions: [
+          {
+            name: "23.501 - Architecture",
             path: "/23.501/html/index.html"
           },
           {
-            name: "23502",
+            name: "23.502 - Procedures",
             path: "/23.502/html/index.html"
+          },
+          {
+            name: "23.527 - Restoration",
+            path: "/23.527/html/index.html"
+          },
+          {
+            name: "24.501 - NAS",
+            path: "/24.501/html/index.html"
+          },
+          {
+            name: "29.501 - SBI Principles",
+            path: "/29.501/html/index.html"
+          },
+          {
+            name: "29.502 - SMF",
+            path: "/29.502/html/index.html"
+          },
+          {
+            name: "29.503 - UDM",
+            path: "/29.503/html/index.html"
+          },
+          {
+            name: "29.507 - PCF",
+            path: "/29.507/html/index.html"
+          },
+          {
+            name: "29.509 - AUSF",
+            path: "/29.509/html/index.html"
+          },
+          {
+            name: "29.510 - NRF",
+            path: "/29.510/html/index.html"
+          },
+          {
+            name: "29.513 - Policy Control",
+            path: "/29.513/html/index.html"
+          },
+          {
+            name: "29.518 - AMF",
+            path: "/29.518/html/index.html"
+          },
+          {
+            name: "29.524 - Cause Codes",
+            path: "/29.524/html/index.html"
+          },
+          {
+            name: "29.531 - NSSF",
+            path: "/29.531/html/index.html"
+          },
+          {
+            name: "29.571 - Common Data Types",
+            path: "/29.571/html/index.html"
+          },
+          {
+            name: "29.572 - Location Services",
+            path: "/29.572/html/index.html"
+          },
+          {
+            name: "38.331 - RRC",
+            path: "/38.331/html/index.html"
+          },
+          {
+            name: "38.413 - NGAP",
+            path: "/38.413/html/index.html"
           },
 
           // Add more file options as needed
