@@ -12,7 +12,7 @@ RUN npm install
 # 拷贝应用程序代码到工作目录
 COPY . .
 
-EXPOSE 443
+EXPOSE 80
 
 # 启动应用程序
-CMD ["npm", "run", "dev", "--", "--port", "443"]
+CMD ["sudo", "npm", "run", "dev", "--", "--port", "80"]
