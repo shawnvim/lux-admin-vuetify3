@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 80
 
 # 启动应用程序
-CMD ["sudo", "npm", "run", "dev", "--", "--port", "80"]
+CMD ["npm", "run", "dev", "--", "--port", "80"]
