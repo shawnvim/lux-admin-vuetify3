@@ -13,4 +13,4 @@ RUN npm install
 COPY . .
 
 # 启动应用程序
-CMD ["npm", "run", dev]
+CMD ["npm", "run", "dev"]
