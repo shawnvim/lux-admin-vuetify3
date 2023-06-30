@@ -11,6 +11,21 @@ import { fileURLToPath, URL } from "node:url";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  optimizeDeps: {
+    include: [
+      'vuetify/lib/components/VSlider/index.mjs',
+      'vuetify/lib/components/VProgressCircular/index.mjs',
+      'vuetify/lib/components/VTable/index.mjs',
+      'vuetify/lib/components/VChip/index.mjs',
+      'vuetify/lib/components/VCheckbox/index.mjs',
+      'vuetify/lib/components/VLayout/index.mjs',
+      'vuetify/lib/components/VSwitch/index.mjs',
+      'vuetify/lib/components/VOverlay/index.mjs',
+      'vuetify/lib/components/VFileInput/index.mjs',
+      'vuetify/lib/components/VTimeline/index.mjs',
+      'vuetify/lib/components/VForm/index.mjs',
+    ],
+  },
   plugins: [
     vue(),
     // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
@@ -38,13 +53,6 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 4399,
-    proxy: {
-      "/sdApi": {
-        target: "http://me.yunrobot.cn:7860",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/sdApi/, ""),
-      },
-    },
   },
   css: {
     preprocessorOptions: {
