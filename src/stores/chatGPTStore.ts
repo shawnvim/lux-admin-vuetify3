@@ -6,7 +6,7 @@ export const useChatGPTStore = defineStore({
     propmpt: "",
     configDialog: false,
     apiKey: "",
-    url: "",
+    url: "https://api.shawn-ai.com",
     context: "",
     model: "gpt-3.5-turbo",
   }),
