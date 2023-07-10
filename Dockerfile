@@ -12,7 +12,7 @@ RUN npm ci
 # 拷贝应用程序代码到工作目录
 COPY . .
 
-EXPOSE 80
+EXPOSE 8888
 
 # 启动应用程序
-CMD ["npm", "run", "dev", "--", "--port", "80"]
+CMD ["npm", "run", "dev", "--", "--port", "8888"]
