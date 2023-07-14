@@ -9,6 +9,7 @@ import ChartsRoutes from "./charts.routes";
 import AppsRoutes from "./apps.routes";
 import DataRoutes from "./data.routes";
 import AiRoutes from "./ai.routes";
+import ArchitectureRoutes from "./architecture.routes";
 
 export const routes = [
   {
