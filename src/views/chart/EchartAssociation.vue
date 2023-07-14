@@ -12,30 +12,165 @@
   const nodes = [
     {
       "id": "0",
-      "name": "Myriel",
-      "symbolSize": 19.12381,
-      "x": -266.82776,
-      "y": 299.6904,
-      "value": 28.685715,
+      "name": "Nginx",
+      "symbolSize": 66,
+      "x": -87,
+      "y": -6,
+      "value": "haha",
       "category": 0
     },
     {
       "id": "1",
-      "name": "Napoleon",
-      "symbolSize": 2.6666666666666665,
-      "x": -418.08344,
-      "y": 446.8853,
-      "value": 4,
+      "name": "Nginx Lua",
+      "symbolSize": 16,
+      "x": 40,
+      "y": 113,
+      "value": 10,
       "category": 0
     },
     {
-      "id": "2",
-      "name": "MlleBaptistine",
-      "symbolSize": 6.323809333333333,
+      "id": "10",
+      "name": "ACME",
+      "symbolSize": 26,
+      "x": -385,
+      "y": -20,
+      "value": 28.685715,
+      "category": 1
+    },
+    {
+      "id": "20",
+      "name": "Service Desk Web",
+      "symbolSize": 35,
+      "x": 206,
+      "y": -14,
+      "value": 4,
+      "category": 2
+    },
+    {
+      "id": "21",
+      "name": "Milvus Attu",
+      "symbolSize": 23,
+      "x": 165,
+      "y": 117,
+      "value": 4,
+      "category": 2
+    },
+    {
+      "id": "30",
+      "name": "3GPP Searcher",
+      "symbolSize": 30,
+      "x": -82,
+      "y": -200,
+      "value": 9.485714,
+      "category": 3
+    },
+    {
+      "id": "31",
+      "name": "CPI Searcher",
+      "symbolSize": 20,
+      "x": 4,
+      "y": -270,
+      "value": 9.485714,
+      "category": 3
+    },
+    {
+      "id": "32",
+      "name": "SBI API Searcher",
+      "symbolSize": 20,
+      "x": 150,
+      "y": -300,
+      "value": 9.485714,
+      "category": 3
+    },
+    {
+      "id": "40",
+      "name": "Langchain Embedding Client",
+      "symbolSize": 30,
+      "x": 238,
+      "y": -210,
+      "value": 9.485714,
+      "category": 4
+    },
+    {
+      "id": "41",
+      "name": "Embedding Model",
+      "symbolSize": 16,
+      "x": 353,
+      "y": -250,
+      "value": 9.485714,
+      "category": 4
+    },
+    {
+      "id": "50",
+      "name": "Tokenizer",
+      "symbolSize": 15,
       "x": -212.76357,
       "y": 245.29176,
       "value": 9.485714,
-      "category": 1
+      "category": 5
+    },
+    {
+      "id": "51",
+      "name": "Spider",
+      "symbolSize": 23,
+      "x": -266,
+      "y": 350,
+      "value": 9.485714,
+      "category": 5
+    },
+    {
+      "id": "52",
+      "name": "Converter",
+      "symbolSize": 35,
+      "x": -100,
+      "y": 300,
+      "value": 9.485714,
+      "category": 5
+    },
+    {
+      "id": "60",
+      "name": "Milvus SA",
+      "symbolSize": 40,
+      "x": 387,
+      "y": 110,
+      "value": 9.485714,
+      "category": 6
+    },
+    {
+      "id": "61",
+      "name": "etcd",
+      "symbolSize": 22,
+      "x": 516,
+      "y": 47,
+      "value": 9.485714,
+      "category": 6
+    },
+    {
+      "id": "62",
+      "name": "MinIO",
+      "symbolSize": 22,
+      "x": 600,
+      "y": 135,
+      "value": 9.485714,
+      "category": 6
+    },
+    {
+      "id": "70",
+      "name": "Local Chat Model",
+      "symbolSize": 30,
+      "x": 355,
+      "y": -74,
+      "value": 9.485714,
+      "category": 7
+    },
+    {
+      "id": "71",
+      "name": "OpenAI",
+      "symbolSize": 20,
+      "x": 646,
+      "y": -151,
+      "value": 9.485714,
+      "category": 7
     },
   ];
 
@@ -45,17 +180,117 @@
       "target": "0"
     },
     {
-      "source": "2",
+      "source": "10",
       "target": "0"
     },
+    {
+      "source": "0",
+      "target": "21"
+    },
+    {
+      "source": "0",
+      "target": "20"
+    },
+    {
+      "source": "20",
+      "target": "30"
+    },
+    {
+      "source": "20",
+      "target": "31"
+    },
+    {
+      "source": "20",
+      "target": "32"
+    },
+
+    {
+      "source": "70",
+      "target": "20"
+    },
+    {
+      "source": "71",
+      "target": "20"
+    },
+    {
+      "source": "30",
+      "target": "40"
+    },
+    {
+      "source": "31",
+      "target": "40"
+    },
+    {
+      "source": "32",
+      "target": "40"
+    },
+    {
+      "source": "30",
+      "target": "60"
+    },
+    {
+      "source": "31",
+      "target": "60"
+    },
+    {
+      "source": "32",
+      "target": "60"
+    },
+    {
+      "source": "40",
+      "target": "41"
+    },
+    {
+      "source": "51",
+      "target": "52"
+    },
+    {
+      "source": "50",
+      "target": "52"
+    },
+    {
+      "source": "40",
+      "target": "52"
+    },
+    {
+      "source": "52",
+      "target": "60"
+    },
+    {
+      "source": "60",
+      "target": "61"
+    },
+    {
+      "source": "60",
+      "target": "62"
+    },
+
   ];
 
   const categories = [
     {
-      "name": "UI"
+      "name": "Access Network" // 0-9
     },
     {
-      "name": "Data Base"
+      "name": "Certification Management" // 10-19
+    },
+    {
+      "name": "User Interaction" // 20-29
+    },
+    {
+      "name": "Similarity Search Application" // 30-39
+    },
+    {
+      "name": "Embedding Application" // 40-49
+    },
+    {
+      "name": "Crawler Application" // 50-59
+    },
+    {
+      "name": "Data Base" // 60-69
+    },
+    {
+      "name": "LLM" // 70 -
     },
   ];
 
