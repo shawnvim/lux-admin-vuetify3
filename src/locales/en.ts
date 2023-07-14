@@ -109,6 +109,8 @@ export default {
     echartPie: "Echart Pie ",
     echartScatter: "Echart Scatter ",
     echartOthers: "Echart Others ",
+    echartComposition: "Container Components ",
+    echartAssociation: "Association Classes  ",
     apexChart: "ApexChart ",
     data: {
       usersDataPage: "Users Data",
