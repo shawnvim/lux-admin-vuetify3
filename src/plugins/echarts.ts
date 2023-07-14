@@ -10,6 +10,8 @@ import {
   PictorialBarChart,
   RadarChart,
   ScatterChart,
+  SunburstChart,
+  GraphChart,
 } from "echarts/charts";
 
 import {
@@ -42,6 +44,8 @@ echarts.use([
   PieChart,
   MapChart,
   RadarChart,
+  SunburstChart,
+  GraphChart,
 
   PictorialBarChart,
   RadarComponent,
