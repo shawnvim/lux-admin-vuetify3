@@ -8,6 +8,7 @@ import menuAi from "./menus/ai.menu";
 
 import menuChatbot from "./menus/chatbot.menu";
 import menuLab from "./menus/lab.menu";
+import menuArchitecture from "./menus/architecture.menu";
 
 export default {
   menu: [
@@ -72,7 +73,10 @@ export default {
         text: "lab",
         items: menuLab,
     },
-
+    {
+        text: "Architecture",
+        items: menuArchitecture,
+    },
 
   ],
 };
