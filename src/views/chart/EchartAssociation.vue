@@ -23,7 +23,7 @@
       "id": "1",
       "name": "Nginx Lua",
       "symbolSize": 16,
-      "x": 40,
+      "x": -140,
       "y": 113,
       "value": 10,
       "category": 0
@@ -32,8 +32,17 @@
       "id": "10",
       "name": "ACME",
       "symbolSize": 26,
-      "x": -385,
-      "y": -20,
+      "x": -300,
+      "y": 100,
+      "value": 28.685715,
+      "category": 1
+    },
+    {
+      "id": "11",
+      "name": "User Permission",
+      "symbolSize": 26,
+      "x": -50,
+      "y": -280,
       "value": 28.685715,
       "category": 1
     },
@@ -41,8 +50,8 @@
       "id": "20",
       "name": "Service Desk Web",
       "symbolSize": 35,
-      "x": 206,
-      "y": -14,
+      "x": -200,
+      "y": -180,
       "value": 4,
       "category": 2
     },
@@ -50,35 +59,44 @@
       "id": "21",
       "name": "Milvus Attu",
       "symbolSize": 23,
-      "x": 165,
-      "y": 117,
+      "x": 200,
+      "y": 180,
       "value": 4,
       "category": 2
     },
     {
       "id": "30",
-      "name": "3GPP Searcher",
+      "name": "3GPP Tech&Spec",
       "symbolSize": 30,
-      "x": -82,
-      "y": -200,
+      "x": -480,
+      "y": 400,
       "value": 9.485714,
       "category": 3
     },
     {
       "id": "31",
-      "name": "CPI Searcher",
+      "name": "CPI Docs",
       "symbolSize": 20,
-      "x": 4,
-      "y": -270,
+      "x": -550,
+      "y": 350,
       "value": 9.485714,
       "category": 3
     },
     {
       "id": "32",
-      "name": "SBI API Searcher",
+      "name": "Pre-Sales Support Ticket",
       "symbolSize": 20,
-      "x": 150,
-      "y": -300,
+      "x": -440,
+      "y": 300,
+      "value": 9.485714,
+      "category": 3
+    },
+    {
+      "id": "33",
+      "name": "Automatic Deployment Manual",
+      "symbolSize": 20,
+      "x": -500,
+      "y": 250,
       "value": 9.485714,
       "category": 3
     },
@@ -87,7 +105,7 @@
       "name": "Langchain Embedding Client",
       "symbolSize": 30,
       "x": 238,
-      "y": -210,
+      "y": -150,
       "value": 9.485714,
       "category": 4
     },
@@ -96,7 +114,7 @@
       "name": "Embedding Model",
       "symbolSize": 16,
       "x": 353,
-      "y": -250,
+      "y": -200,
       "value": 9.485714,
       "category": 4
     },
@@ -104,7 +122,7 @@
       "id": "50",
       "name": "Tokenizer",
       "symbolSize": 15,
-      "x": -212.76357,
+      "x": -200,
       "y": 245.29176,
       "value": 9.485714,
       "category": 5
@@ -132,7 +150,7 @@
       "name": "Milvus SA",
       "symbolSize": 40,
       "x": 387,
-      "y": 110,
+      "y": 200,
       "value": 9.485714,
       "category": 6
     },
@@ -141,7 +159,7 @@
       "name": "etcd",
       "symbolSize": 22,
       "x": 516,
-      "y": 47,
+      "y": 347,
       "value": 9.485714,
       "category": 6
     },
@@ -150,7 +168,7 @@
       "name": "MinIO",
       "symbolSize": 22,
       "x": 600,
-      "y": 135,
+      "y": 335,
       "value": 9.485714,
       "category": 6
     },
@@ -158,8 +176,8 @@
       "id": "70",
       "name": "Local Chat Model",
       "symbolSize": 30,
-      "x": 355,
-      "y": -74,
+      "x": -500,
+      "y": -100,
       "value": 9.485714,
       "category": 7
     },
@@ -167,7 +185,7 @@
       "id": "71",
       "name": "OpenAI",
       "symbolSize": 20,
-      "x": 646,
+      "x": -646,
       "y": -151,
       "value": 9.485714,
       "category": 7
@@ -193,15 +211,35 @@
     },
     {
       "source": "20",
-      "target": "30"
+      "target": "0"
     },
     {
       "source": "20",
-      "target": "31"
+      "target": "11"
     },
     {
-      "source": "20",
-      "target": "32"
+      "source": "11",
+      "target": "40"
+    },
+    {
+      "source": "30",
+      "target": "51"
+    },
+    {
+      "source": "31",
+      "target": "51"
+    },
+    {
+      "source": "32",
+      "target": "51"
+    },
+    {
+      "source": "33",
+      "target": "51"
+    },
+    {
+      "source": "21",
+      "target": "60"
     },
 
     {
@@ -213,28 +251,8 @@
       "target": "20"
     },
     {
-      "source": "30",
-      "target": "40"
-    },
-    {
-      "source": "31",
-      "target": "40"
-    },
-    {
-      "source": "32",
-      "target": "40"
-    },
-    {
-      "source": "30",
-      "target": "60"
-    },
-    {
-      "source": "31",
-      "target": "60"
-    },
-    {
-      "source": "32",
-      "target": "60"
+      "source": "40",
+      "target": "20"
     },
     {
       "source": "40",
@@ -252,8 +270,13 @@
       "source": "40",
       "target": "52"
     },
+
     {
-      "source": "52",
+      "source": "60",
+      "target": "40"
+    },
+    {
+      "source": "40",
       "target": "60"
     },
     {
@@ -272,13 +295,13 @@
       "name": "Access Network" // 0-9
     },
     {
-      "name": "Certification Management" // 10-19
+      "name": "Certification & Management" // 10-19
     },
     {
       "name": "User Interaction" // 20-29
     },
     {
-      "name": "Similarity Search Application" // 30-39
+      "name": "Document Source" // 30-39
     },
     {
       "name": "Embedding Application" // 40-49
@@ -296,6 +319,9 @@
 
 
   const option = computed<EChartsOption>(() => ({
+    // tooltip: {},
+    axisPointer: {animation: true},
+
     legend: [
       {
         data: categories.map(function (a) {
@@ -305,7 +331,6 @@
     ],
     series: [
       {
-        name: 'Les Miserables',
         type: 'graph',
         layout: 'none',
         data: nodes,
@@ -327,8 +352,8 @@
         lineStyle: {
           color: 'source',
           curveness: 0.3
-        }
-      }
+        },
+      },
     ],
   }));
 
