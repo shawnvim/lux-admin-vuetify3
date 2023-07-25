@@ -14,6 +14,7 @@ import UILayout from "@/layouts/UILayout.vue";
 import LandingLayout from "@/layouts/LandingLayout.vue";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import AuthLayout from "@/layouts/AuthLayout.vue";
+import IndexLayout from "@/layouts/IndexLayout.vue";
 import CustomizationMenu from "@/components/CustomizationMenu.vue";
 import { useCustomizeThemeStore } from "@/stores/customizeTheme";
 import BackToTop from "@/components/common/BackToTop.vue";
@@ -32,6 +33,7 @@ const layouts = {
   ui: UILayout,
   landing: LandingLayout,
   auth: AuthLayout,
+  index: IndexLayout,
 };
 
 type LayoutName = "default" | "ui" | "landing" | "auth" | "error";
