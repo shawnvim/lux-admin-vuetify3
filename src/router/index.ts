@@ -14,8 +14,9 @@ import ArchitectureRoutes from "./architecture.routes";
 export const routes = [
   {
     path: "/",
-    redirect: "/dashboard",
-    meta: {},
+    meta: {layout: "index"},
+    component: () =>
+    import("@/views/landing/HomePage.vue"),
   } as any,
   {
     path: "/dashboard",
