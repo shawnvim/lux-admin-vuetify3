@@ -70,6 +70,7 @@ export default {
     utilityMaintenance: "メンテナンス",
     utilitySoon: "近日公開",
     utilityHelp: "よくある質問/ヘルプ",
+    helpCenter: "ヘルプセンター",
     levels: "メニューレベル",
     disabled: "メニュー無効",
     docs: "ドキュメンテーション",
