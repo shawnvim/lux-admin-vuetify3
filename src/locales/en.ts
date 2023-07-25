@@ -71,6 +71,7 @@ export default {
     utilityMaintenance: "Maintenance",
     utilitySoon: "Coming Soon",
     utilityHelp: "FAQs / Help",
+    helpCenter: "Help Center",
     levels: "Menu Levels",
     disabled: "Menu Disabled",
     docs: "Documentation",
