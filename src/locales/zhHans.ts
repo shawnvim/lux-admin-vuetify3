@@ -70,6 +70,7 @@ export default {
     utilityMaintenance: "保养",
     utilitySoon: "快来了",
     utilityHelp: "常见问题/帮助",
+    helpCenter: "帮助中心",
     levels: "菜单级别",
     disabled: "菜单已禁用",
     docs: "文献资料",
