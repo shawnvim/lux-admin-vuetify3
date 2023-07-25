@@ -7,6 +7,9 @@
 import StatusMenu from "./StatusMenu.vue";
 import { useAuthStore } from "@/stores/authStore";
 import { useRouter } from "vue-router";
+import { useProfileStore } from "@/stores/profileStore";
+
+const profileStore = useProfileStore();
 const router = useRouter();
 
 const authStore = useAuthStore();
@@ -68,9 +71,9 @@ const navs = [
     <template v-slot:activator="{ props }">
       <v-btn class="mx-2" icon v-bind="props">
         <v-badge content="2" color="success" dot bordered>
-          <v-avatar size="40">
+          <v-avatar size="40" class="mx-auto elevation-12">
             <v-img
-              src="https://avatars.githubusercontent.com/u/114594494?v=4"
+              :src="profileStore.getProfile().basic.avatar"
             ></v-img>
           </v-avatar>
         </v-badge>
@@ -85,18 +88,18 @@ const navs = [
           <template v-slot:prepend>
             <v-avatar size="40">
               <v-img
-                src="https://avatars.githubusercontent.com/u/114594494?v=4"
+                :src="profileStore.getProfile().basic.avatar"
               ></v-img>
             </v-avatar>
           </template>
 
           <v-list-item-title class="font-weight-bold text-primary">
-            Shawn Qiu
+            {{ profileStore.getProfile().basic.username }}
             <StatusMenu />
           </v-list-item-title>
           <v-list-item-subtitle>
             <!-- {{ $store.state.user.email  }} -->
-            qiushihao@outlook.com
+            {{ profileStore.getProfile().basic.email }}
           </v-list-item-subtitle>
         </v-list-item>
       </v-list>
