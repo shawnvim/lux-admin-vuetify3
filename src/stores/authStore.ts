@@ -29,19 +29,23 @@ export const useAuthStore = defineStore("auth", {
     },
 
     registerWithEmailAndPassword(email: string, password: string) {
-      router.push("/");
+      router.push("/dashboard");
     },
 
     loginWithEmailAndPassword(email: string, password: string) {
-      router.push("/");
+      router.push("/dashboard");
     },
 
     loginWithGoogle() {
-      router.push("/");
+      router.push("/dashboard");
+    },
+
+    login() {
+      router.push({ name: "auth-signin" });
     },
 
     logout() {
-      router.push({ name: "auth-signin" });
+      router.push("/");
     },
   },
 });
