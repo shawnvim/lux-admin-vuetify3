@@ -8,7 +8,7 @@ export const useProfileStore = defineStore({
       realname: "Qiu Shihao",
       email: "qiushihao@outlook.com",
       avatar:
-        "https://avatars.githubusercontent.com/u/114594494?v=4",
+        "https://ui-avatars.com/api/?background=ffffff&format=svg&name=Shawn+Qiu",
       location: "China,Shanghai",
       role: "Admin",
       disabled: false,
