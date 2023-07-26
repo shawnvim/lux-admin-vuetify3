@@ -52,13 +52,13 @@ const scrollToBottom = () => {
         <img
           v-if="customizeTheme.darkTheme"
           width="200"
-          src="@/assets/logo_dark.svg"
+          src="@/assets/Shawn AI.png"
           alt=""
         />
         <img
           v-else="customizeTheme.darkTheme"
           width="200"
-          src="@/assets/logo_light.svg"
+          src="@/assets/Shawn AI.png"
           alt=""
         />
       </v-card>
