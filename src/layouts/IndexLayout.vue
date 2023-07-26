@@ -2,12 +2,12 @@
   import ToolbarLanguage from "@/components/toolbar/ToolbarLanguage.vue";
   import ToolbarLogin from "@/components/toolbar/ToolbarLogin.vue";
 
-  import { useCustomizeThemeStore } from "@/stores/customizeTheme";
-  const customizeTheme = useCustomizeThemeStore();
+  import { useTheme } from "vuetify";
+  const theme = useTheme();
 </script>
 
 <template>
-  <v-app-bar>
+  <v-app-bar :theme="theme.global.name.value">
     <v-spacer></v-spacer>
     <div class="d-flex">
       <ToolbarLanguage />
