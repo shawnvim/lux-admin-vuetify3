@@ -1,18 +1,13 @@
-FROM node:latest
-
-# 设置工作目录
-WORKDIR /usr/src/app
-
-# 拷贝 package.json 和 package-lock.json 到工作目录
+# build stage
+FROM node:lts-alpine as build-stage
+WORKDIR /app
 COPY package*.json ./
-
-# 安装依赖
-RUN npm ci
-
-# 拷贝应用程序代码到工作目录
+RUN npm install
 COPY . .
+RUN npm run build
 
-EXPOSE 8888
-
-# 启动应用程序
-CMD ["npm", "run", "dev", "--", "--port", "8888"]
+# production stage
+FROM nginx:stable-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
