@@ -259,7 +259,7 @@
   .toc {
     float: left;
     position: relative;
-    height: calc(90vh - 68px);
+    height: calc(90vh - 72px);
     overflow-y: auto;
     left: 0;
     width: 27vw;
