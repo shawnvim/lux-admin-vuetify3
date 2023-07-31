@@ -261,6 +261,7 @@
     position: relative;
     height: calc(90vh - 72px);
     overflow-y: auto;
+    scrollbar-width: thin; /* Firefox */
     left: 0;
     width: 27vw;
     min-width: 30em;
@@ -274,13 +275,6 @@
     margin-left: 15ch;
     width: calc(100% - 15ch);
     height: 100%;
-  }
-</style>
-
-<style scoped lang="scss">
-  ::-webkit-scrollbar {
-    width: 15px;
-    background-color: #f5f5f5;
   }
 </style>
 
