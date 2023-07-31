@@ -10,8 +10,9 @@ import { Icon } from "@iconify/vue";
 const profileStore = useProfileStore();
 const basic = reactive({
   username: "",
-  realname: "",
+  displayname: "",
   email: "",
+  phone: "",
   avatar: "",
   location: "",
   role: "",
@@ -45,8 +46,9 @@ onMounted(() => {
   console.log(profile);
 
   basic.username = profile.basic.username;
-  basic.realname = profile.basic.realname;
+  basic.displayname = profile.basic.displayname;
   basic.email = profile.basic.email;
+  basic.phone = profile.basic.countrycode + profile.basic.phone;
   basic.avatar = profile.basic.avatar;
   basic.location = profile.basic.location;
   basic.role = profile.basic.role;
@@ -73,7 +75,7 @@ Basic with Icons
 
             <div class="text-center mt-5">
               <h3 class="text-h6 font-weight-bold">
-                {{ basic.username }}
+                {{ basic.displayname }}
                 <v-chip size="small" class="font-weight-bold" color="blue">
                   {{ basic.role }}
                 </v-chip>
@@ -96,7 +98,7 @@ Basic with Icons
 
           <div class="py-5 px-10">
             <v-icon color="grey"> mdi-phone-outline </v-icon>
-            <span class="ml-4">070-4444-4444</span>
+            <span class="ml-4">{{ basic.phone }}</span>
           </div>
         </v-card>
       </v-col>
@@ -112,8 +114,10 @@ Basic with Icons
           <v-card-text class="pa-7">
             <v-row>
               <v-col cols="12" sm="6">
-                <v-label class="font-weight-medium mb-2">Username</v-label>
+                <v-label class="font-weight-medium mb-2">User Name</v-label>
                 <v-text-field
+                  class="bg-blue-grey-lighten-5"  
+                  readonly
                   v-model="basic.username"
                   color="primary"
                   variant="outlined"
@@ -124,9 +128,9 @@ Basic with Icons
                 />
               </v-col>
               <v-col cols="12" sm="6">
-                <v-label class="font-weight-medium mb-2">Realname</v-label>
+                <v-label class="font-weight-medium mb-2">Display Name</v-label>
                 <v-text-field
-                  v-model="basic.realname"
+                  v-model="basic.displayname"
                   color="primary"
                   variant="outlined"
                   density="compact"
@@ -159,7 +163,7 @@ Basic with Icons
               elevation="1"
               variant="elevated"
             >
-              Unpdate Basic Info</v-btn
+            Update Basic Info</v-btn
             >
           </v-card-actions>
         </v-card>
@@ -298,7 +302,7 @@ Basic with Icons
               elevation="1"
               variant="elevated"
             >
-              Unpdate Password</v-btn
+            Update Password</v-btn
             >
           </v-card-actions>
         </v-card>
@@ -340,7 +344,7 @@ Basic with Icons
               elevation="1"
               variant="elevated"
             >
-              Unpdate Notifications</v-btn
+            Update Notifications</v-btn
             >
           </v-card-actions>
         </v-card>
