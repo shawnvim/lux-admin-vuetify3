@@ -4,11 +4,13 @@ export const useProfileStore = defineStore({
   id: "userProfile",
   state: () => ({
     basic: {
-      username: "Shawn Qiu",
-      realname: "Qiu Shihao",
+      username: "qiushihao",
+      displayname: "Shawn Qiu",
       email: "qiushihao@outlook.com",
+      countrycode: "86",
+      phone: "00123456789",
       avatar:
-        "https://ui-avatars.com/api/?background=ffffff&format=svg&name=Shawn+Qiu",
+        "https://ui-avatars.com/api/?background=ffffff&bold=true&rounded=true&format=svg&name=Shawn+Qiu",
       location: "China,Shanghai",
       role: "Admin",
       disabled: false,
