@@ -41,4 +41,10 @@ export default [
     link: "/data/docs-viewer",
     key: "menu.data.docsViewer",
   },
+  {
+    icon: "mdi-form-textbox",
+    text: "HTML Viewer",
+    link: "/data/html-viewer",
+    key: "menu.data.htmlViewer",
+  },
 ];
