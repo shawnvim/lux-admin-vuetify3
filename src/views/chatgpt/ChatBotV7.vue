@@ -32,7 +32,7 @@
   const promptMessage = computed(() => {
     return [
       {
-        content: "",
+        content: chatGPTStore.propmpt,
         role: "system",
       },
     ];
@@ -42,10 +42,11 @@
   const messages = ref<Message[]>([]);
 
   const requestMessages = computed(() => {
+    console.log("Use prompt", promptMessage.value)
     if (messages.value.length <= 2) {
       return [...promptMessage.value, ...messages.value];
     } else {
-      // 截取最新的10条信息
+      // 截取最新的2条信息
       const slicedMessages = messages.value.slice(-2);
       return [...promptMessage.value, ...slicedMessages];
     }
