@@ -53,6 +53,20 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 4399,
+    proxy: {
+      "/rfc" :{
+        changeOrigin: true,
+        secure: false,
+        ws: true,
+        target: "https://www.rfc-editor.org"
+      },
+      "/html" :{
+        changeOrigin: true,
+        secure: false,
+        ws: true,
+        target: "https://datatracker.ietf.org/doc"
+      }
+    }
   },
   css: {
     preprocessorOptions: {
