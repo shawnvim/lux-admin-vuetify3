@@ -43,7 +43,6 @@ onMounted(() => {
     select.value = foundItem
   }
 
-q
 });
 
 watch(select,(newValue, oldValue)=>{
