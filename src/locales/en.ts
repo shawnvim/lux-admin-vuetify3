@@ -125,6 +125,7 @@ export default {
       customFormGeneration: "Custom Form Generation",
       richTextEditor: "Rich Text Editor",
       docsViewer: "Docs Viewer",
+      htmlViewer: "HTML Viewer",
       editTable: "Edit Table",
     },
     chatbot_v1: "ChatBot",
