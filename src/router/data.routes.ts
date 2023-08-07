@@ -115,11 +115,26 @@ export default [
     component: () => import("@/views/datatable/editor/DocsViewer.vue"),
     meta: {
       requiresAuth: true,
-      layout: "landing",
+      layout: "ui",
       category: "Data",
-      title: "DocsViewer",
+      title: "Docs Viewer - 3GPP Technical Specification",
     },
   },
+  // HTML viewer
+    {
+      path: "/data/html-viewer",
+      component: () => import("@/views/datatable/editor/HtmlViewer.vue"),
+      children: [{
+        path: ":id",
+        component: () => import("@/views/datatable/editor/HtmlViewerInt.vue"),
+      }],
+      meta: {
+        requiresAuth: true,
+        layout: "ui",
+        category: "Data",
+        title: "HTML Viewer - RFC",
+      },
+    },
   // edit table
   {
     path: "/data/edit-table",
