@@ -217,7 +217,6 @@
     <v-row>
       <v-col>
         <v-card-title>
-          <h2 class="font-weight-bold pa-3">3GPP Technical Specification</h2>
           <v-select variant="outlined" placeholder="File Directory" label="Select TS" density="compact" hide-details
             :items="fileOptions" item-title="name" item-value="path" v-model="iframeSrc">
           </v-select>
