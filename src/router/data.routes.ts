@@ -121,20 +121,30 @@ export default [
     },
   },
   // HTML viewer
-    {
-      path: "/data/html-viewer",
-      component: () => import("@/views/datatable/editor/HtmlViewer.vue"),
-      children: [{
-        path: ":id",
-        component: () => import("@/views/datatable/editor/HtmlViewerInt.vue"),
-      }],
-      meta: {
-        requiresAuth: true,
-        layout: "ui",
-        category: "Data",
-        title: "HTML Viewer - RFC",
+  {
+    path: "/data/html-viewer",
+    component: () => import("@/views/datatable/editor/HtmlViewer.vue"),
+    children: [
+      {
+        path: "",
+        redirect: "/data/html-viewer/rfc7540",
       },
+      {
+        path: ":id",
+        component: () =>
+          import(
+              /* webpackChunkName: "apps-chat-channel" */ "@/views/datatable/editor/HtmlViewerInt.vue"
+          ),
+      },
+
+    ],
+    meta: {
+      requiresAuth: true,
+      layout: "ui",
+      category: "Data",
+      title: "HTML Viewer - RFC",
     },
+  },
   // edit table
   {
     path: "/data/edit-table",
