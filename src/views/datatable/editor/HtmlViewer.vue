@@ -17,19 +17,46 @@ import { useSnackbarStore } from "@/stores/snackbarStore";
 const snackbarStore = useSnackbarStore();
 const router = useRouter();
 
-const items = ref([
+const rawItems = ref([
   {
-    name: "RFC7540 - HTTP2",
-    path: "/rfc/rfc7540",
     route: "rfc7540",
+    description: "HTTP2"
   },
   {
-    name: "RFC5741 - Streams, Headers, and Boilerplates",
-    path: "/rfc/rfc5741",
     route: "rfc5741",
+    description: "Streams, Headers, and Boilerplates"
+  },
+  {
+    route: "rfc2223",
+    description: "Instructions to RFC Authors",
+  },
+  {
+    route: "rfc4844",
+    description: "The RFC Series and RFC Editor",
+  },
+  {
+    route: "rfc7230",
+    description: "HTTP/1.1: Message Syntax and Routing",
+  },
+  {
+    route: "rfc7231",
+    description: "HTTP/1.1: Semantics and Content",
+  },
+  {
+    route: "rfc7232",
+    description: "HTTP/1.1: Conditional Requests",
   },
 
 ]);
+
+const items = ref(rawItems.value.map((object) => (
+  {
+    ...object,
+    ...{ name: object.route.toUpperCase() + " - " + object.description},
+    ...{ path: "/rfc/" + object.route }
+  }
+)
+));
 
 const select = ref({ name: "", path: "", route: "" });
 
