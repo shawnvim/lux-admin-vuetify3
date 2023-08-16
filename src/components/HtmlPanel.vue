@@ -68,8 +68,8 @@ export default {
     methods: {
 
         removeHtmlStyle(html) {
-            //var rel = /@media only screen\s*{[\s\S]*?}/g;
-            var rel = /<style[^>]*>[^]*?<\/style>/g
+            var rel = /@media[^{]+\{([^{}]*\{[^{}]*\})*[^}]*\}/g;
+            // var rel = /<style[^>]*>[^]*?<\/style>/g
             var newHtml = "";
             if (html) {
                 newHtml = html.replace(rel, "");
@@ -121,9 +121,13 @@ export default {
 </script>
 
 
-<style>
-  .unset {
-    all: revert;
-  }
+<style scoped>
+:deep(.unset) {
+        overflow: auto;
+	}
+:deep(.unset) a {
+        color: Royalblue;
+    };
+
 
 </style>
