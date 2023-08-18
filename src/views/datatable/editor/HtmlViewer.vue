@@ -1,21 +1,12 @@
-<template>
-  <v-container class="h-full">
-    <v-select variant="outlined" placeholder="File Directory" label="Select HTML" density="compact" hide-details
-      :items="items" item-title="name" item-value="path" v-model="select" return-object>
-    </v-select>
-
-    <HtmlPanel :url.asyc="select['path']" @click=handleClick />
-
-  </v-container>
-</template>
-  
-  
 <script setup lang="ts">
 
 import HtmlPanel from "@/components/HtmlPanel.vue";
 import { useSnackbarStore } from "@/stores/snackbarStore";
+import { useChatGPTStore } from "@/stores/chatGPTStore";
+
 const snackbarStore = useSnackbarStore();
 const router = useRouter();
+const chatGPTStore = useChatGPTStore();
 
 const rawItems = ref([
   {
@@ -58,7 +49,8 @@ const items = ref(rawItems.value.map((object) => (
 )
 ));
 
-const select = ref({ name: "", path: "", route: "" });
+const select = ref({});
+
 
 onUpdated(() => {
   handleLoad()
@@ -69,10 +61,9 @@ onMounted(() => {
 });
 
 watch(select, (newValue, oldValue) => {
-  console.log('Selected', newValue)
-
   if (router.currentRoute.value.params.id != select.value.route) {
-    router.push(`/data/html-viewer/${select.value['route']}`);
+    console.log('VselectRouter', location, router.currentRoute.value)
+    router.push(`${select.value['route']}`);
   } else {
     // let scroll = `${router.currentRoute.value.path}${router.currentRoute.value.hash}`
     //console.log('Scroll', scroll)
@@ -85,36 +76,72 @@ watch(select, (newValue, oldValue) => {
 });
 
 const handleLoad = () => {
-  let id = router.currentRoute.value.params.id;
+  let routerObj = router.currentRoute.value
+  console.log('Router', location, routerObj)
+
+  let id = routerObj.params.id;
 
   let foundItem = items.value.find((item) => item.route == id);
 
-  console.log('Router', location, router.currentRoute.value)
-
   if (foundItem != undefined) {
-    select.value = foundItem
+    select.value = {...foundItem, ...{hash: routerObj.hash}}
   } else {
+    //select.value = {name: "No Document Found", route : ""}
     snackbarStore.showErrorMessage("Document not found, need follow-up support!");
+    
   }
 }
 
 
-const handleClick = (event: MouseEvent) => {
-  // Check if the clicked target is an "a" element
-  const target = event.target as HTMLElement;
-  if (target.tagName.toLowerCase() === 'a') {
-    event.preventDefault();
-    console.log('Target', target);
- 
-    if (target.pathname.startsWith('/data/html-viewer/')) {
-      router.push(target.pathname+target.hash)
+const handleClick = (event) => {
+  const target = event.composedPath()
+  event.preventDefault();
+
+  //const selection =  window.getSelection()
+  
+
+  const originalTarget = target.find(
+    el => el.tagName && el.tagName.toLowerCase() === 'a' && el.pathname);
+
+  if (originalTarget.pathname.startsWith('/data/html-viewer/')) {
+      router.push(originalTarget.pathname+originalTarget.hash)
     } else {
-      window.open(target, '_blank')
+      window.open(originalTarget, '_blank')
     }
-  } else {
-    event.preventDefault();
-  }
 };
 
+const handleSelection = (event) => {
+  chatGPTStore.updateContext(window.getSelection()?.toString());
+};
+
+/*
+      const shadowDomElement = document.querySelector('.vhtml').shadowRoot;
+      console.log('shadowDomElement', shadowDomElement);
+      if (shadowDomElement) {
+      const shadowDomHash = shadowDomElement.querySelector(target.hash);
+      console.log('targetshadowDomElement', shadowDomHash);
+      if (shadowDomHash) {
+        shadowDomHash.scrollIntoView({
+          block: 'center',
+        behavior: 'smooth',
+      });
+      }
+    };
+
+*/
 
 </script>
+
+<template>
+  <v-container class="h-full">
+    <v-select variant="outlined" placeholder="File Directory" label="Select HTML" density="compact" hide-details
+      :items="items" item-title="name" item-value="path" v-model="select" return-object>
+    </v-select>
+    <v-label></v-label>
+    <HtmlPanel :url.asyc="select" @click=handleClick 
+    @mouseup=handleSelection
+    ref="sectionRef"/>
+
+  </v-container>
+</template>
+  
