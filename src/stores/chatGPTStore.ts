@@ -28,8 +28,10 @@ export const useChatGPTStore = defineStore({
     updateModel(model: string) {
       this.model = model;
     },
-    updateContext(context: string) {
-      this.context = context;
+    updateContext(context: string | undefined) {
+      if (context != undefined) {
+        this.context = context;
+      }
     },
   },
 });
