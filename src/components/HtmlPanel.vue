@@ -1,9 +1,9 @@
 <template>
-    <div class="h-full bg-white d-flex align-center justify-center">
-
-        <div  class="vhtml"
-            ref="shadowHost"> 
-            </div>
+    <div class="h-full bg-white d-flex align-center justify-center"
+    id = "shadowParent">
+        <div class="vhtml" ref="shadowHost">
+            
+        </div>
     </div>
 </template>
   
@@ -52,6 +52,7 @@ export default {
     mounted() {
 
         this.shadowRoot = this.$refs.shadowHost.attachShadow({ mode: "open" });
+        
         this.load(this.url)
 
 
@@ -85,12 +86,12 @@ export default {
                 // 加载中
 
                 this.loading = true
-                this.shadowRoot.innerHTML = "Loading"
+                // this.shadowRoot.innerHTML = "Loading"
                 //this.html = ""
 
                 let param = {
                     headers: {
-                        Accept: 'text/html, text/plain'
+                        Accept: 'text/html, text/plain, text/css'
                     }
 
                 }
@@ -103,8 +104,29 @@ export default {
 
                     //this.html = response.data
 
-                    this.shadowRoot.innerHTML = response.data;
+                    this.shadowRoot.innerHTML = response.data; //.replace(/@media screen[^{]+\{([^{}]*\{[^{}]*\})*[^}]*\}/g, "");
                     this.loading = false
+
+                    
+
+                    console.log('ShadowLoad', this.shadowRoot)
+
+                    
+
+                    try {
+                        console.log('TOC', this.shadowRoot.children['toc'])
+                        //this.shadowRoot.children['toc'].style.position = 'relative'
+                    //this.shadowRoot.children['toc'].style.border = '3px solid #73AD21'
+                    //this.shadowRoot.children['toc'].style.top = '250px'
+                    //this.shadowRoot.children['toc'].style.float= 'right'
+                    //this.shadowRoot.children['toc'].style.width= '25%'
+
+                    this.shadowRoot.removeChild(this.shadowRoot.children['toc'])
+                    } catch (errToc) {
+                        
+                    }
+
+                    
 
                     if (urlHash) try {
                         console.log("Hash jump: ", urlPath, urlHash)
@@ -115,7 +137,7 @@ export default {
                             behavior: 'smooth',
                         });
                     } catch (err) {
-                        console.log("Hash not found: ", urlHash, regHash)
+                        console.log("Hash not found: ", urlHash)
                     }
                     
 
@@ -144,12 +166,18 @@ export default {
 
 
 <style scoped>
-:deep(.vhtml) {
+
+:global(.vhtml) {
     overflow: auto;
-	}
-:deep(.vhtml) a {
-    color: Royalblue;
-    };
+    
+	};
+
+
+
+
+
+
+
 
 
 </style>
