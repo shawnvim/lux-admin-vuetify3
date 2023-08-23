@@ -11,7 +11,7 @@ const chatGPTStore = useChatGPTStore();
 const rawItems = ref([
   {
     route: "rfc7540",
-    description: "HTTP2"
+    description: "HTTP/2"
   },
   {
     route: "rfc5741",
@@ -36,6 +36,14 @@ const rawItems = ref([
   {
     route: "rfc7232",
     description: "HTTP/1.1: Conditional Requests",
+  },
+  {
+    route: "rfc8740",
+    description: "TLS 1.3 with HTTP/2",
+  },
+  {
+    route: "rfc9113",
+    description: "HTTP/2",
   },
 
 ]);
@@ -104,7 +112,13 @@ const handleClick = (event) => {
     el => el.tagName && el.tagName.toLowerCase() === 'a' && el.pathname);
 
   if (originalTarget.pathname.startsWith('/data/html-viewer/')) {
-      router.push(originalTarget.pathname+originalTarget.hash)
+    router.push(originalTarget.pathname+originalTarget.hash) 
+  }
+  //else if (originalTarget.pathname.startsWith('/rfc/')) {
+    //router.push(`/data/html-viewer${originalTarget.pathname}`+originalTarget.hash)
+   // } 
+    else if (originalTarget.pathname.startsWith('/')){
+      window.open(originalTarget.pathname.replace("/", "https://www.rfc-editor.org/"), '_blank')
     } else {
       window.open(originalTarget, '_blank')
     }
@@ -138,9 +152,14 @@ const handleSelection = (event) => {
       :items="items" item-title="name" item-value="path" v-model="select" return-object>
     </v-select>
     <v-label></v-label>
+    
+
+    
+   
     <HtmlPanel :url.asyc="select" @click=handleClick 
     @mouseup=handleSelection
     ref="sectionRef"/>
+  
 
   </v-container>
 </template>
