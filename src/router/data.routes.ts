@@ -127,10 +127,10 @@ export default [
     children: [
       {
         path: "",
-        redirect: "/data/html-viewer/rfc7540",
+        redirect: "/data/html-viewer/rfc/rfc7540",
       },
       {
-        path: ":id",
+        path: "rfc/:id",
         component: () =>
           import(
               /* webpackChunkName: "apps-chat-channel" */ "@/views/datatable/editor/HtmlViewerInt.vue"
