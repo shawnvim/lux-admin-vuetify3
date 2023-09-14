@@ -16,6 +16,7 @@ instance.interceptors.response.use(
     return response;
   },
   (error) => {
+    console.log("UNS", ACCESS_KEY);
     if (error.response) {
       const status = error.response.status;
       const data = error.response.data;
