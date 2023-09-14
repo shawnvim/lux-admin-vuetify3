@@ -10,6 +10,7 @@ import AppsRoutes from "./apps.routes";
 import DataRoutes from "./data.routes";
 import AiRoutes from "./ai.routes";
 import ArchitectureRoutes from "./architecture.routes";
+import { useAuthStore } from "@/stores/authStore";
 
 export const routes = [
   {
@@ -67,6 +68,17 @@ const router = createRouter({
       return { top: 0 };
     }
   },
+});
+
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore();
+  console.log("authStoreLoggedIn", authStore.isLoggedIn)
+  console.log("requiresAuth", to.meta.requiresAuth)
+  if (to.meta.requiresAuth && !authStore.isLoggedIn) {
+    next({ path: "/", replace: true ,force:true});
+  } else {
+    next();
+  }
 });
 
 export default router;
