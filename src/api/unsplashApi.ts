@@ -15,6 +15,7 @@ instance.interceptors.response.use(
     return response;
   },
   (error) => {
+    console.log("MODE", import.meta.env.MODE);
     console.log("UNS", ACCESS_KEY);
     if (error.response) {
       const status = error.response.status;
