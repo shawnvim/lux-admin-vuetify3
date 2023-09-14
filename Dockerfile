@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN echo "VITE_UNSPLASH_ACCESS_KEY=${{ secrets.UNSPLASH_ACCESS_KEY }}" > .env
+RUN echo VITE_UNSPLASH_ACCESS_KEY=${{ secrets.UNSPLASH_ACCESS_KEY }} > .env
 RUN npm run build
 
 # production stage
