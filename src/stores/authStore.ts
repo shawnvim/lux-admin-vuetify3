@@ -29,11 +29,11 @@ export const useAuthStore = defineStore("auth", {
     },
 
     registerWithEmailAndPassword(email: string, password: string) {
-      this.isLoggedIn = true;
       router.push("/dashboard");
     },
 
     loginWithEmailAndPassword(email: string, password: string) {
+      this.isLoggedIn = true;
       router.push("/dashboard");
     },
 
