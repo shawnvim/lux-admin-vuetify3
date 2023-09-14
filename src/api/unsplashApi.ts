@@ -15,10 +15,6 @@ instance.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.log("MODE", import.meta.env.MODE);
-    console.log("API", import.meta.env.VITE_API_BASE_URL);
-    console.log("ENV", import.meta.env);
-    console.log("UNS", ACCESS_KEY);
     if (error.response) {
       const status = error.response.status;
       const data = error.response.data;
