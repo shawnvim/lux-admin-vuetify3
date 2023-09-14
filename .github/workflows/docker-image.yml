@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
-
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -34,4 +31,5 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/lux-admin-vuetify3:latest
           secrets: |
             "UNSPLASH_ACCESS_KEY=${{ secrets.UNSPLASH_ACCESS_KEY }}"
-            "VITE_UNSPLASH_ACCESS_KEY=${{ secrets.UNSPLASH_ACCESS_KEY }}"
+            "SUPA_ANON_KEY=${{ secrets.SUPA_ANON_KEY }}"
+            "SUPA_URL=${{ secrets.SUPA_URL }}"
