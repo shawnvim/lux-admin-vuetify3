@@ -12,7 +12,6 @@ const instance = axios.create({
 
 instance.interceptors.response.use(
   (response) => {
-    console.log("UNS", ACCESS_KEY);
     return response;
   },
   (error) => {
