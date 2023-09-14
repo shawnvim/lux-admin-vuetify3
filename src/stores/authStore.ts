@@ -29,6 +29,7 @@ export const useAuthStore = defineStore("auth", {
     },
 
     registerWithEmailAndPassword(email: string, password: string) {
+      this.isLoggedIn = true;
       router.push("/dashboard");
     },
 
@@ -45,6 +46,7 @@ export const useAuthStore = defineStore("auth", {
     },
 
     logout() {
+      this.isLoggedIn = false;
       router.push("/");
     },
   },
