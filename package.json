@@ -13,6 +13,7 @@
   "dependencies": {
     "@gradio/client": "^0.1.2",
     "@mdi/font": "7.2.96",
+    "@supabase/supabase-js": "^2.33.2",
     "@tiptap/pm": "^2.0.2",
     "@tiptap/starter-kit": "^2.0.2",
     "@tiptap/vue-3": "^2.0.2",
