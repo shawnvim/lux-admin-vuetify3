@@ -7,5 +7,7 @@ declare interface ImportMeta {
     readonly VITE_OPENAI_API_KEY: string;
     readonly VITE_TTS_KEY: string;
     readonly VITE_TTS_REGION: string;
+    readonly VITE_SUPABASE_ANON_KEY: string;
+    readonly VITE_SUPABASE_URL: string;
   };
 }
