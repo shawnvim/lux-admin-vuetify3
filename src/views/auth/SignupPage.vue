@@ -19,6 +19,9 @@ const showPassword = ref(false);
 
 // Submit
 const handleRegister = async () => {
+  console.log(window.location.protocol+"//"
+  +window.location.host
+  +'/auth/signup');
   const { valid } = await refLoginForm.value.validate();
   if (valid) {
     isLoading.value = true;
@@ -35,7 +38,7 @@ const emailRules = ref([
   (v: string) => /.+@.+\..+/.test(v) || "E-mail must be valid",
 ]);
 
-const usernameRules = ref([(v: string) => !!v || "UserNmae is required"]);
+// const usernameRules = ref([(v: string) => !!v || "UserNmae is required"]);
 
 const passwordRules = ref([
   (v: string) => !!v || "Password is required",
@@ -70,6 +73,7 @@ const resetErrors = () => {
         v-model="isFormValid"
         lazy-validation
       >
+      <!-- 
         <v-text-field
           v-model="username"
           required
@@ -86,6 +90,7 @@ const resetErrors = () => {
           @keyup.enter="handleRegister"
           @change="resetErrors"
         ></v-text-field>
+        -->
         <v-text-field
           ref="refEmail"
           v-model="email"
@@ -146,12 +151,14 @@ const resetErrors = () => {
           block
           size="x-large"
           color="white"
-          @click="authStore.loginWithGoogle()"
+          @click="authStore.loginWithDemo()"
           :disabled="isSignInDisabled"
         >
-          <Icon icon="logos:google-icon" class="mr-3 my-2" />
-          Google
+          <Icon icon="simple-icons:ericsson" class="mr-3 my-2" />
+          Demo
         </v-btn>
+
+        <!--
         <v-btn
           class="mb-2 lighten-2 text-capitalize"
           block
@@ -162,6 +169,8 @@ const resetErrors = () => {
           <Icon icon="logos:facebook" class="mr-3" />
           Facebook
         </v-btn>
+        -->
+        
 
         <div v-if="errorProvider" class="error--text my-5">
           {{ errorProviderMessages }}
