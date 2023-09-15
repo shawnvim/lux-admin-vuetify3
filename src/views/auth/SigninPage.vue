@@ -26,7 +26,7 @@ const handleLogin = async () => {
 };
 
 const signInWithGoolgle = () => {
-  authStore.loginWithGoogle();
+  authStore.loginWithDemo();
 };
 
 // Error Check
@@ -53,7 +53,7 @@ const resetErrors = () => {
 };
 
 const signInWithFacebook = () => {
-  alert(authStore.isLoggedIn);
+  alert("SignIn status: "+authStore.isLoggedIn);
 };
 </script>
 <template>
@@ -137,9 +137,10 @@ const signInWithFacebook = () => {
           @click="signInWithGoolgle"
           :disabled="isSignInDisabled"
         >
-          <Icon icon="logos:google-icon" class="mr-3 my-2" />
-          Google
+          <Icon icon="simple-icons:ericsson" class="mr-3 my-2" />
+          Demo
         </v-btn>
+        <!--
         <v-btn
           class="mb-2 lighten-2 text-capitalize"
           elevation="1"
@@ -152,6 +153,7 @@ const signInWithFacebook = () => {
           <Icon icon="logos:facebook" class="mr-3" />
           Facebook
         </v-btn>
+        -->
 
         <div v-if="errorProvider" class="error--text my-2">
           {{ errorProviderMessages }}
