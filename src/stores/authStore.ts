@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { supabase } from "@/plugins/supabase";
 
 import router from "@/router";
 
@@ -7,6 +8,33 @@ interface Profile {
   name: string;
   avatar: string;
   created: boolean;
+}
+
+const handleSignup = async (email: string, password: string) => {
+  try {
+    const { data, error } = await supabase.auth.signUp(
+      {
+        email: email,
+        password: password,
+        options: {
+          emailRedirectTo: '/auth/signin',
+          data: {
+            //first_name: 'John',
+            //age: 27,
+          }
+        }
+      }
+    )
+    if (error) throw error
+    alert('Check your email for the login link!')
+    router.push({ name: "auth-signin" });
+  } catch (error) {
+    if (error instanceof Error) {
+      alert(error.message)
+      router.push({ name: "auth-signup" });
+    }
+  } finally {
+  }
 }
 
 export const useAuthStore = defineStore("auth", {
@@ -29,7 +57,8 @@ export const useAuthStore = defineStore("auth", {
     },
 
     registerWithEmailAndPassword(email: string, password: string) {
-      router.push("/dashboard");
+      handleSignup(email, password);
+      // router.push("/dashboard");
     },
 
     loginWithEmailAndPassword(email: string, password: string) {
@@ -37,7 +66,8 @@ export const useAuthStore = defineStore("auth", {
       router.push("/dashboard");
     },
 
-    loginWithGoogle() {
+    loginWithDemo() {
+      this.isLoggedIn = true;
       router.push("/dashboard");
     },
 
