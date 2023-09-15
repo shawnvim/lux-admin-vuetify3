@@ -4,6 +4,8 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN --mount=type=secret,id=UNSPLASH_ACCESS_KEY echo VITE_UNSPLASH_ACCESS_KEY=$(cat /run/secrets/UNSPLASH_ACCESS_KEY) >> .env.pro
+RUN --mount=type=secret,id=SUPABASE_URL echo VITE_SUPABASE_URL=$(cat /run/secrets/SUPABASE_URL) >> .env.pro
+RUN --mount=type=secret,id=SUPABASE_ANON_KEY echo VITE_SUPABASE_ANON_KEY=$(cat /run/secrets/SUPABASE_ANON_KEY) >> .env.pro
 RUN npm run build
 
 # production stage
