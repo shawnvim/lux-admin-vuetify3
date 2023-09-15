@@ -19,7 +19,7 @@ const handleSignup = async (email: string, password: string) => {
         options: {
           emailRedirectTo: window.location.protocol+"//"
   +window.location.host
-  +'/auth/signup',
+  +'/auth/signin',
           data: {
             //first_name: 'John',
             //age: 27,
