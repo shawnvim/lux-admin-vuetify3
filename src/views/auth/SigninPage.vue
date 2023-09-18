@@ -7,8 +7,8 @@ const isLoading = ref(false);
 const isSignInDisabled = ref(false);
 
 const refLoginForm = ref();
-const email = ref("vuetify3-visitor@gmail.com");
-const password = ref("sfm12345");
+const email = ref("qiushihao@outlook.com");
+const password = ref("qwerty12345");
 const isFormValid = ref(true);
 
 // show password field
@@ -19,9 +19,15 @@ const handleLogin = async () => {
   if (valid) {
     isLoading.value = true;
     isSignInDisabled.value = true;
-    authStore.loginWithEmailAndPassword(email.value, password.value);
+    authStore.loginWithEmailAndPassword(email.value, password.value).then(
+      _res => {
+        isLoading.value = false;
+        isSignInDisabled.value = false;
+        password.value = "";
+      }
+    )
   } else {
-    console.log("no");
+    console.log("Invalid Login Form");
   }
 };
 
@@ -38,7 +44,7 @@ const emailRules = ref([
 const passwordRules = ref([
   (v: string) => !!v || "Password is required",
   (v: string) =>
-    (v && v.length <= 10) || "Password must be less than 10 characters",
+    (v && v.length <= 14) || "Password must be less than 14 characters",
 ]);
 
 // error provider
@@ -55,6 +61,7 @@ const resetErrors = () => {
 const signInWithFacebook = () => {
   alert("SignIn status: "+authStore.isLoggedIn);
 };
+
 </script>
 <template>
   <v-card color="white" class="pa-3 ma-3" elevation="3">
@@ -97,7 +104,7 @@ const signInWithFacebook = () => {
           :error="error"
           :error-messages="errorMessages"
           :label="$t('login.password')"
-          placeholder="sfm12345"
+          placeholder="qwerty"
           density="default"
           variant="underlined"
           color="primary"
