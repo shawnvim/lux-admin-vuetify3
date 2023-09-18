@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
 import { useAuthStore } from "@/stores/authStore";
+import i18n from "@/plugins/i18n";
 
 const authStore = useAuthStore();
 const username = ref("");
@@ -13,6 +14,7 @@ const refLoginForm = ref();
 const isFormValid = ref(true);
 const email = ref("");
 const password = ref("");
+const password2 = ref("");
 
 // show password field
 const showPassword = ref(false);
@@ -26,7 +28,12 @@ const handleRegister = async () => {
   if (valid) {
     isLoading.value = true;
     isSignInDisabled.value = true;
-    authStore.registerWithEmailAndPassword(email.value, password.value);
+    authStore.registerWithEmailAndPassword(email.value, password.value).then(
+      _res => {
+        isLoading.value = false;
+        isSignInDisabled.value = false;
+      }
+    );
   } else {
     console.log("no");
   }
@@ -34,16 +41,17 @@ const handleRegister = async () => {
 
 // Error Check
 const emailRules = ref([
-  (v: string) => !!v || "E-mail is required",
-  (v: string) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+  (v: string) => !!v || i18n.global.t('error.email_null'),
+  (v: string) => /.+@.+\..+/.test(v) || i18n.global.t('error.email_invalid'),
 ]);
 
 // const usernameRules = ref([(v: string) => !!v || "UserNmae is required"]);
 
 const passwordRules = ref([
-  (v: string) => !!v || "Password is required",
+  (v: string) => !!v || i18n.global.t('error.password_null'),
   (v: string) =>
-    (v && v.length <= 10) || "Password must be less than 10 characters",
+    (v && v.length <= 14) || i18n.global.t('error.password_invalid'),
+  (v: string) => v == password.value || i18n.global.t('error.password2_invalid'),
 ]);
 
 // error provider
@@ -57,6 +65,7 @@ const resetErrors = () => {
   error.value = false;
   errorMessages.value = "";
 };
+
 </script>
 <template>
   <v-card color="white" class="pa-3 ma-3" elevation="3">
@@ -111,6 +120,26 @@ const resetErrors = () => {
         <v-text-field
           ref="refPassword"
           v-model="password"
+          :append-inner-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="showPassword ? 'text' : 'password'"
+          :error="error"
+          :error-messages="errorMessages"
+          :label="$t('register.password')"
+          density="default"
+          variant="underlined"
+          color="primary"
+          bg-color="#fff"
+          :rules="passwordRules"
+          name="password"
+          outlined
+          validateOn="blur"
+          @change="resetErrors"
+          @keyup.enter="handleRegister"
+          @click:append-inner="showPassword = !showPassword"
+        ></v-text-field>
+        <v-text-field
+          ref="refPassword2"
+          v-model="password2"
           :append-inner-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
           :type="showPassword ? 'text' : 'password'"
           :error="error"
