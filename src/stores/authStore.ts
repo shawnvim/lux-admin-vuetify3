@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
 import { supabase } from "@/plugins/supabase";
 
+import { useSnackbarStore } from "@/stores/snackbarStore";
+
 import router from "@/router";
 
 interface Profile {
@@ -28,15 +30,41 @@ const handleSignup = async (email: string, password: string) => {
       }
     )
     if (error) throw error
-    alert('Check your email for the login link!')
-    router.push({ name: "auth-signin" });
+    useSnackbarStore().showSuccessMessage("Check your email for the login link!");
+    router.push({ name: "auth-signin"});
   } catch (error) {
     if (error instanceof Error) {
-      alert(error.message)
-      router.push({ name: "auth-signup" });
+      useSnackbarStore().showErrorMessage(error.message);
+      //alert(error.message)
+      router.push({ name: "auth-signup"});
     }
   } finally {
   }
+}
+
+const signOut = async() => {
+  const { error } = await supabase.auth.signOut()
+  return error
+}
+
+const signIn = async(email: string, password: string) => {
+
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    })
+    if (error) throw error
+    return true
+  } catch (error) {
+    if (error instanceof Error) {
+      useSnackbarStore().showErrorMessage(error.message);
+      // alert(error.message)
+      return false
+    }
+  } finally {
+  }
+
 }
 
 export const useAuthStore = defineStore("auth", {
@@ -59,13 +87,16 @@ export const useAuthStore = defineStore("auth", {
     },
 
     registerWithEmailAndPassword(email: string, password: string) {
-      handleSignup(email, password);
+      return handleSignup(email, password);
       // router.push("/dashboard");
     },
 
     loginWithEmailAndPassword(email: string, password: string) {
-      this.isLoggedIn = true;
-      router.push("/dashboard");
+      return signIn(email, password).then(res => {
+        if (res == true) {
+          this.loginWithDemo()
+        }
+      })
     },
 
     loginWithDemo() {
@@ -79,6 +110,7 @@ export const useAuthStore = defineStore("auth", {
 
     logout() {
       this.isLoggedIn = false;
+      signOut();
       router.push("/");
     },
   },
