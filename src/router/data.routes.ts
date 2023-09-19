@@ -145,6 +145,16 @@ export default [
       title: "HTML Viewer - RFC",
     },
   },
+  {
+    path: "/data/api-viewer",
+    component: () => import("@/views/datatable/editor/ApiViewer.vue"),
+    meta: {
+      requiresAuth: true,
+      layout: "ui",
+      category: "Data",
+      title: "API Viewer - 5GC CN",
+    },
+  },
   // edit table
   {
     path: "/data/edit-table",
