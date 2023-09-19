@@ -47,4 +47,10 @@ export default [
     link: "/data/html-viewer",
     key: "menu.data.htmlViewer",
   },
+  {
+    icon: "mdi-form-textbox",
+    text: "API Viewer",
+    link: "/data/api-viewer",
+    key: "menu.data.apiViewer",
+  },
 ];
