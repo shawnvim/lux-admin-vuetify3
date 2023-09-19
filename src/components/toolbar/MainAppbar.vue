@@ -63,18 +63,19 @@ const showMobileSearch = ref(false);
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
         <!-- search input desktop -->
-
+        <ToolbarNotifications />
+        <!--
         <v-btn v-if="mdAndUp" icon>
           <v-badge dot color="success">
             <v-icon>mdi-account-multiple-outline</v-icon>
           </v-badge>
         </v-btn>
-        <ToolbarNotifications />
         <v-btn v-if="mdAndUp" icon to="/apps/todo">
           <v-badge :content="`${todoStore.getTodoList.length} +`" color="error">
             <v-icon>mdi-calendar-check</v-icon>
           </v-badge>
         </v-btn>
+        -->
         <v-divider vertical thickness="2" inset class="ml-5 mr-1"></v-divider>
 
         <ToolbarLanguage />
