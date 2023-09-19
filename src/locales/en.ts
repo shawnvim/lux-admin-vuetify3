@@ -134,6 +134,7 @@ export default {
       richTextEditor: "Rich Text Editor",
       docsViewer: "Docs Viewer",
       htmlViewer: "HTML Viewer",
+      apiViewer: "API Viewer",
       editTable: "Edit Table",
     },
     chatbot_v1: "ChatBot",
@@ -180,6 +181,10 @@ export default {
     },
     playGround: {
       title: "Playground",
+    },
+    toc: {
+      title: "Tech Spec",
+      version: "Release",
     },
   },
   chatgpt: {
