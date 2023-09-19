@@ -1,0 +1,60 @@
+{
+    "releases": [
+        {
+            "title": "Release 18",
+            "value": "Rel-18"
+        },
+        {
+            "title": "Release 17",
+            "value": "Rel-17"
+        },
+        {
+            "title": "Release 16",
+            "value": "Rel-16"
+        },
+        {
+            "title": "Release 15",
+            "value": "Rel-15"
+        }
+    ],
+    "items": [
+        {
+            "type": "subheader",
+            "title": "AMF 29.518"
+        },
+        {
+            "title": "Communication",
+            "value": "TS29518_Namf_Communication"
+        },
+        {
+            "title": "Event Exposure",
+            "value": "TS29518_Namf_EventExposure"
+        },
+        {
+            "title": "Location",
+            "value": "TS29518_Namf_Location"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "SMF 29.502/508/542"
+        },
+        {
+            "title": "PDU Session",
+            "value": "TS29502_Nsmf_PDUSession"
+        },
+        {
+            "title": "Event Exposure",
+            "value": "TS29508_Nsmf_EventExposure"
+        },
+        {
+            "title": "NIDD",
+            "value": "TS29542_Nsmf_NIDD"
+        },
+        {
+            "type": "divider"
+        }
+    ]
+}
