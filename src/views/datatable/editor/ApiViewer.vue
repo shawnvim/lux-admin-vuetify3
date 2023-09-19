@@ -38,8 +38,12 @@ const updateUI = () => {
   });
 }
 
-const clearMessage = () => {
-  searchKey.value = ""
+const clickOutside1 = () => {
+  dialog1.value = false
+}
+
+const clickOutside2 = () => {
+  dialog2.value = false
 }
 
 const onSearch = (Items, Key) => {
@@ -71,25 +75,29 @@ const onSearch = (Items, Key) => {
 </script>
 
 <template>
-  <v-btn size="50" @click="dialog1 = !dialog1, dialog2 = false" class="toolbox-activator-1 elevation-10">
+  <v-btn size="50" @click="dialog1 = !dialog1, dialog2 = false"
+  class="toolbox-activator-1 elevation-10">
     <Icon icon="zondicons:news-paper" height="auto" />
     <v-tooltip activator="parent" location="left" :text="$t('toolbox.toc.title')"></v-tooltip>
   </v-btn>
-  <v-btn size="50" @click="dialog2 = !dialog2, dialog1 = false" class="toolbox-activator-2 elevation-10">
+  <v-btn size="50" @click="dialog2 = !dialog2, dialog1 = false"
+  class="toolbox-activator-2 elevation-10">
     <span>{{ release.slice(-2) }}</span>
     <v-tooltip activator="parent" location="left" :text="$t('toolbox.toc.version')"></v-tooltip>
   </v-btn>
   <teleport to="body">
     <transition name="slide-y">
-      <v-card v-if="dialog1" class="dialog-1 d-flex flex-column" max-width=90vw max-height=80vh>
+      <v-card v-if="dialog1" v-click-outside="clickOutside1"
+      class="dialog-1 d-flex flex-column" max-width=90vw max-height=80vh>
         <v-text-field variant="solo" prepend-inner-icon="mdi-magnify" hide-details placeholder="Search"
-          v-model="searchKey" @click:clear="clearMessage" clear-icon="mdi-close-circle" clearable></v-text-field>
+          v-model="searchKey" @click:clear="searchKey = ''" clear-icon="mdi-close-circle" clearable></v-text-field>
         <v-list :items="onSearch(apiData.items, searchKey)" v-model:selected="selectedDoc">
         </v-list>
       </v-card>
     </transition>
     <transition name="slide-y">
-      <v-card v-if="dialog2" class="dialog-2 d-flex flex-column" max-width=90vw max-height=80vh>
+      <v-card v-if="dialog2" v-click-outside="clickOutside2"
+      class="dialog-2 d-flex flex-column" max-width=90vw max-height=80vh>
         <v-list :items="apiData.releases" v-model:selected="selectedRelease">
         </v-list>
       </v-card>
