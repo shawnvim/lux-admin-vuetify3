@@ -124,7 +124,7 @@ const handleClick = (event) => {
     }
 };
 
-const handleSelection = (event) => {
+const handleSelection = () => {
   chatGPTStore.updateContext(window.getSelection()?.toString());
 };
 
@@ -156,7 +156,7 @@ const handleSelection = (event) => {
 
     
    
-    <HtmlPanel :url.asyc="select" @click=handleClick 
+    <HtmlPanel :url="select" @click=handleClick 
     @mouseup=handleSelection
     ref="sectionRef"/>
   
