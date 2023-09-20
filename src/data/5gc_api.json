@@ -35,6 +35,18 @@
             "value": "TS29518_Namf_Location"
         },
         {
+            "title": "Mobile Termination",
+            "value": "TS29518_Namf_MT"
+        },
+        {
+            "title": "MBS Communication",
+            "value": "TS29518_Namf_MBSCommunication"
+        },
+        {
+            "title": "MBS Broadcast",
+            "value": "TS29518_Namf_MBSBroadcast"
+        },
+        {
             "type": "divider"
         },
         {
@@ -52,6 +64,750 @@
         {
             "title": "NIDD",
             "value": "TS29542_Nsmf_NIDD"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "NRF 29.510"
+        },
+        {
+            "title": "NF Management",
+            "value": "TS29510_Nnrf_NFManagement"
+        },
+        {
+            "title": "NF Discovery",
+            "value": "TS29510_Nnrf_NFDiscovery"
+        },
+        {
+            "title": "OAuth2",
+            "value": "TS29510_Nnrf_AccessToken"
+        },
+        {
+            "title": "Bootstrapping",
+            "value": "TS29510_Nnrf_Bootstrapping"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "Common 29.571"
+        },
+        {
+            "title": "Common Data Types",
+            "value": "TS29571_CommonData"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "UDM 29.503"
+        },
+        {
+            "title": "Subscriber Data Management",
+            "value": "TS29503_Nudm_SDM"
+        },
+        {
+            "title": "UE Context Management",
+            "value": "TS29503_Nudm_UECM"
+        },
+        {
+            "title": "UE Authentication",
+            "value": "TS29503_Nudm_UEAU"
+        },
+        {
+            "title": "Event Exposure",
+            "value": "TS29503_Nudm_EE"
+        },
+        {
+            "title": "Parameter Provisioning",
+            "value": "TS29503_Nudm_PP"
+        },
+        {
+            "title": "NIDD Authorization",
+            "value": "TS29503_Nudm_NIDDAU"
+        },
+        {
+            "title": "Mobile Termination",
+            "value": "TS29503_Nudm_MT"
+        },
+        {
+            "title": "Service-Specific Authorization",
+            "value": "TS29503_Nudm_SSAU"
+        },
+        {
+            "title": "RSDS",
+            "value": "TS29503_Nudm_RSDS"
+        },
+        {
+            "title": "UE ID",
+            "value": "TS29503_Nudm_UEID"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "NSSF 29.531"
+        },
+        {
+            "title": "NSSAI Availability",
+            "value": "TS29531_Nnssf_NSSAIAvailability"
+        },
+        {
+            "title": "NS Selection",
+            "value": "TS29531_Nnssf_NSSelection"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "LMF 29.572"
+        },
+        {
+            "title": "Location",
+            "value": "TS29572_Nlmf_Location"
+        },
+        {
+            "title": "Broadcast",
+            "value": "TS29572_Nlmf_Broadcast"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "AUSF 29.509"
+        },
+        {
+            "title": "UE Authentication",
+            "value": "TS29509_Nausf_UEAuthentication"
+        },
+        {
+            "title": "SoR Protection",
+            "value": "TS29509_Nausf_SoRProtection"
+        },
+        {
+            "title": "UPU Protection",
+            "value": "TS29509_Nausf_UPUProtection"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "SMSF 29.540"
+        },
+        {
+            "title": "SM Service",
+            "value": "TS29540_Nsmsf_SMService"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "PCF 29.514/534/507/512/554/525/537"
+        },
+        {
+            "title": "Policy Authorization",
+            "value": "TS29514_Npcf_PolicyAuthorization"
+        },
+        {
+            "title": "AM Policy Authorization",
+            "value": "TS29534_Npcf_AMPolicyAuthorization"
+        },
+        {
+            "title": "AM Policy Control",
+            "value": "TS29507_Npcf_AMPolicyControl"
+        },
+        {
+            "title": "SM Policy Control",
+            "value": "TS29512_Npcf_SMPolicyControl"
+        },
+        {
+            "title": "BDT Policy Control",
+            "value": "TS29554_Npcf_BDTPolicyControl"
+        },
+        {
+            "title": "Event Exposure",
+            "value": "TS29523_Npcf_EventExposure"
+        },
+        {
+            "title": "UE Policy Control",
+            "value": "TS29525_Npcf_UEPolicyControl"
+        },
+        {
+            "title": "MBS Policy Control",
+            "value": "TS29537_Npcf_MBSPolicyControl"
+        },
+        {
+            "title": "MBS Policy Authorization",
+            "value": "TS29537_Npcf_MBSPolicyAuthorization"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "NSSAAF 29.526"
+        },
+        {
+            "title": "NSSAA",
+            "value": "TS29526_Nnssaaf_NSSAA"
+        },
+        {
+            "title": "AIW",
+            "value": "TS29526_Nnssaaf_AIW"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "NSACF 29.536"
+        },
+        {
+            "title": "NSAC",
+            "value": "TS29536_Nnsacf_NSAC"
+        },
+        {
+            "title": "Slice Event Exposure",
+            "value": "TS29536_Nnsacf_SliceEventExposure"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "UPF 29.564"
+        },
+        {
+            "title": "Event Exposure",
+            "value": "TS29564_Nupf_EventExposure"
+        },
+        {
+            "title": "Get Private UE IP Address",
+            "value": "TS29564_Nupf_GetPrivateUEIPaddr"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "5G-EIR 29.511"
+        },
+        {
+            "title": "Equipment Identity Check",
+            "value": "TS29511_N5g-eir_EquipmentIdentityCheck"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "NEF 29.551/541/591/256"
+        },
+        {
+            "title": "PFD Management",
+            "value": "TS29551_Nnef_PFDmanagement"
+        },
+        {
+            "title": "SM Context",
+            "value": "TS29541_Nnef_SMContext"
+        },
+        {
+            "title": "SM Service",
+            "value": "TS29541_Nnef_SMService"
+        },
+        {
+            "title": "Event Exposure",
+            "value": "TS29591_Nnef_EventExposure"
+        },
+        {
+            "title": "Authentication ",
+            "value": "TS29256_Nnef_Authentication"
+        },
+        {
+            "title": "EAS Deployment",
+            "value": "TS29591_Nnef_EASDeployment"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "UDR 29.504/519"
+        },
+        {
+            "title": "Data Repository",
+            "value": "TS29504_Nudr_DR"
+        },
+        {
+            "title": "Subscription Data",
+            "value": "TS29505_Subscription_Data"
+        },
+        {
+            "title": "Policy Data",
+            "value": "TS29519_Policy_Data"
+        },
+        {
+            "title": "Event Exposure",
+            "value": "TS29519_Exposure_Data"
+        },
+        {
+            "title": "Application Data ",
+            "value": "TS29519_Application_Data"
+        },
+        {
+            "title": "Group ID Map",
+            "value": "TS29504_Nudr_GroupIDmap"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "UDSF 29.598"
+        },
+        {
+            "title": "Data Repository",
+            "value": "TS29598_Nudsf_DataRepository"
+        },
+        {
+            "title": "Timer",
+            "value": "TS29598_Nudsf_Timer"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "BSF 29.521"
+        },
+        {
+            "title": "Management",
+            "value": "TS29521_Nbsf_Management"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "NWDAF 29.520"
+        },
+        {
+            "title": "Events Subscription",
+            "value": "TS29520_Nnwdaf_EventsSubscription"
+        },
+        {
+            "title": "Analytics Info",
+            "value": "TS29520_Nnwdaf_AnalyticsInfo"
+        },
+        {
+            "title": "Data Management",
+            "value": "TS29520_Nnwdaf_DataManagement"
+        },
+        {
+            "title": "ML Model Provision",
+            "value": "TS29520_Nnwdaf_MLModelProvision"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "HSS 29.562/563"
+        },
+        {
+            "title": "UE Authentication",
+            "value": "TS29563_Nhss_UEAU"
+        },
+        {
+            "title": "Subscriber Data Management",
+            "value": "TS29563_Nhss_SDM"
+        },
+        {
+            "title": "UE Context Management",
+            "value": "TS29563_Nhss_UECM"
+        },
+        {
+            "title": "Event Exposure",
+            "value": "TS29563_Nhss_EE"
+        },
+        {
+            "title": "IMS UE Authentication",
+            "value": "TS29562_Nhss_imsUEAU"
+        },
+        {
+            "title": "IMS SDM",
+            "value": "TS29562_Nhss_imsSDM"
+        },
+        {
+            "title": "IMS UECM",
+            "value": "TS29562_Nhss_imsUECM"
+        },
+        {
+            "title": "GBA SDM",
+            "value": "TS29562_Nhss_gbaSDM"
+        },
+        {
+            "title": "GBA UE Authentication",
+            "value": "TS29562_Nhss_gbaUEAU"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "MB-SMF 29.532"
+        },
+        {
+            "title": "MBS Session",
+            "value": "TS29532_Nmbsmf_MBSSession"
+        },
+        {
+            "title": "MBS TMGI",
+            "value": "TS29532_Nmbsmf_TMGI"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "MB-SF 29.532"
+        },
+        {
+            "title": "MBS User Service",
+            "value": "TS29580_Nmbsf_MBSUserService"
+        },
+        {
+            "title": "MBS User Data Ingest Session",
+            "value": "TS29580_Nmbsf_MBSUserDataIngestSession"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "MB-STF 29.581"
+        },
+        {
+            "title": "MBS Distribution Session",
+            "value": "TS29581_Nmbstf_DistSession"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "MB 26.517"
+        },
+        {
+            "title": "MBS User Service Announcement",
+            "value": "TS26517_MBSUserServiceAnnouncement"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "GBA BSF 29.309"
+        },
+        {
+            "title": "GBA Service",
+            "value": "TS29309_Nbsp_GBA"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "SOR-AF 29.550"
+        },
+        {
+            "title": "Steering of Roaming",
+            "value": "TS29550_Nsoraf_SOR"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "SP-AF 29.544"
+        },
+        {
+            "title": "Secured Packet",
+            "value": "TS29544_Nspaf_SecuredPacket"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "AF 29.517/557/255"
+        },
+        {
+            "title": "Event Exposure",
+            "value": "TS29517_Naf_EventExposure"
+        },
+        {
+            "title": "ProSe",
+            "value": "TS29557_Naf_ProSe"
+        },
+        {
+            "title": "Authentication",
+            "value": "TS29255_Naf_Authentication"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "CHF 29.532"
+        },
+        {
+            "title": "Spending Limit Control",
+            "value": "TS29594_Nchf_SpendingLimitControl"
+        },
+        {
+            "title": "Converged Charging",
+            "value": "TS32291_Nchf_ConvergedCharging"
+        },
+        {
+            "title": "Offline-Only Charging",
+            "value": "TS32291_Nchf_OfflineOnlyCharging"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "SEPP N32 29.573"
+        },
+        {
+            "title": "Handshake",
+            "value": "TS29573_N32_Handshake"
+        },
+        {
+            "title": "Forwarding",
+            "value": "TS29573_JOSEProtectedMessageForwarding"
+        },
+        {
+            "title": "Telescopic FQDN Mapping",
+            "value": "TS29573_SeppTelescopicFqdnMapping"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "UCMF 29.673/675"
+        },
+        {
+            "title": "UE Radio Capability Management",
+            "value": "TS29673_Nucmf_UERCM"
+        },
+        {
+            "title": "Provisioning ",
+            "value": "TS29675_Nucmf_Provisioning"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "MNPF 29.578"
+        },
+        {
+            "title": "Number Portability Status",
+            "value": "TS29578_Nmnpf_NPStatus"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "GMLC 29.515"
+        },
+        {
+            "title": "Location",
+            "value": "TS29515_Ngmlc_Location"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "EASDF 29.556"
+        },
+        {
+            "title": "DNS Context",
+            "value": "TS29556_Neasdf_DNSContext"
+        },
+        {
+            "title": "Baseline DNS Pattern",
+            "value": "TS29556_Neasdf_BaselineDNSPattern"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "AAnF 29.535"
+        },
+        {
+            "title": "AKMA Anchor Service",
+            "value": "TS29535_Naanf_AKMA"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "N5G DDNMF 29.555"
+        },
+        {
+            "title": "Discovery",
+            "value": "TS29555_N5g-ddnmf_Discovery"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "TSCTSF 29.565"
+        },
+        {
+            "title": "Time Synchronization",
+            "value": "TS29565_Ntsctsf_TimeSynchronization"
+        },
+        {
+            "title": "QoS and TSC Assistance",
+            "value": "TS29565_Ntsctsf_QoSandTSCAssistance"
+        },
+        {
+            "title": "ASTI",
+            "value": "TS29565_Ntsctsf_ASTI"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "ADRF 29.575"
+        },
+        {
+            "title": "Data Management",
+            "value": "TS29575_Nadrf_DataManagement"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "MFAF 29.576"
+        },
+        {
+            "title": "3DA Data Management",
+            "value": "TS29576_Nmfaf_3daDataManagement"
+        },
+        {
+            "title": "3CA Data Management",
+            "value": "TS29576_Nmfaf_3caDataManagement"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "DCAF 26.532"
+        },
+        {
+            "title": "Common Data Types",
+            "value": "TS26532_CommonData"
+        },
+        {
+            "title": "Provisioning (R1)",
+            "value": "TS26532_Ndcaf_DataReportingProvisioning"
+        },
+        {
+            "title": "Configuration & Reporting (R2/3/4)",
+            "value": "TS26532_Ndcaf_DataReporting"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "DCCF 29.574"
+        },
+        {
+            "title": "Data Management",
+            "value": "TS29574_Ndccf_DataManagement"
+        },
+        {
+            "title": "Context Management",
+            "value": "TS29574_Ndccf_ContextManagement"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "IP-SM-GW 29.577"
+        },
+        {
+            "title": "SM Service",
+            "value": "TS29577_Nipsmgw_SMService"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "SMS Router 29.577"
+        },
+        {
+            "title": "SM Service",
+            "value": "TS29577_Nrouter_SMService"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "SMS-IWMSC 29.579"
+        },
+        {
+            "title": "SM Service",
+            "value": "TS29579_Niwmsc_SMService"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "PKMF 29.559"
+        },
+        {
+            "title": "KeyRequest Service",
+            "value": "TS29559_Npkmf_PKMFKeyRequest"
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "subheader",
+            "title": "PANF 29.553"
+        },
+        {
+            "title": "Prose Key Service",
+            "value": "TS29553_Npanf_ProseKey"
         },
         {
             "type": "divider"
