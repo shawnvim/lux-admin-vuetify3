@@ -91,14 +91,16 @@ const onSearch = (Items, Key) => {
       class="dialog-1 d-flex flex-column" max-width=90vw max-height=80vh>
         <v-text-field variant="solo" prepend-inner-icon="mdi-magnify" hide-details placeholder="Search"
           v-model="searchKey" @click:clear="searchKey = ''" clear-icon="mdi-close-circle" clearable></v-text-field>
-        <v-list :items="onSearch(apiData.items, searchKey)" v-model:selected="selectedDoc">
+        <v-list class="toc" density="compact"
+        :items="onSearch(apiData.items, searchKey)" v-model:selected="selectedDoc">
         </v-list>
       </v-card>
     </transition>
     <transition name="slide-y">
       <v-card v-if="dialog2" v-click-outside="clickOutside2"
       class="dialog-2 d-flex flex-column" max-width=90vw max-height=80vh>
-        <v-list :items="apiData.releases" v-model:selected="selectedRelease">
+        <v-list class="toc"
+        :items="apiData.releases" v-model:selected="selectedRelease">
         </v-list>
       </v-card>
     </transition>
@@ -134,6 +136,7 @@ $each: 55px;
 .dialog-2 {
   z-index: 999;
   position: fixed;
+  scrollbar-width: thin;
   top: $top + $each;
   right: 5px;
 }
@@ -141,4 +144,8 @@ $each: 55px;
 .dialog-2 {
   top: $top + 2*$each;
 }
+
+.toc {
+    scrollbar-width: thin; /* Firefox */
+  }
 </style>
