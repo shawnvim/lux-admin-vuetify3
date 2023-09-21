@@ -1,0 +1,16 @@
+[submodule "public/5GC_APIs/Rel-18"]
+	path = public/5GC_APIs/Rel-18
+	url = https://github.com/jdegre/5GC_APIs
+	branch = Rel-18
+[submodule "public/5GC_APIs/Rel-17"]
+	path = public/5GC_APIs/Rel-17
+	url = https://github.com/jdegre/5GC_APIs
+	branch = Rel-17
+[submodule "public/5GC_APIs/Rel-16"]
+	path = public/5GC_APIs/Rel-16
+	url = https://github.com/jdegre/5GC_APIs
+	branch = Rel-16
+[submodule "public/5GC_APIs/Rel-15"]
+	path = public/5GC_APIs/Rel-15
+	url = https://github.com/jdegre/5GC_APIs
+	branch = Rel-15
