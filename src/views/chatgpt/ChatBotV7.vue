@@ -18,6 +18,7 @@
   const chatGPTStore = useChatGPTStore();
 
   interface Message {
+    name? : string;
     content : string;
     role : "user" | "assistant" | "system" | "function";
   }
@@ -106,7 +107,7 @@
           method: "POST",
           body: JSON.stringify({
             messages: requestMessages.value,
-            model: "gpt-3.5-turbo-16k",
+            model: chatGPTStore.getModel,
             stream: true,
             functions: [{
               "name": "3GPP_5G_Assistent",
@@ -222,7 +223,7 @@
       </perfect-scrollbar>
       <div class="no-message-container" v-else>
         <h1 class="text-h4 text-md-h2 text-blue-lighten-1 font-weight-bold">
-          Ask Me Any Thing
+          Ask Me 3GPP
         </h1>
         <AnimationAi :size="300" />
       </div>
@@ -241,7 +242,7 @@
           <v-tooltip activator="parent" location="top" text="ChatGPT Config"></v-tooltip>
         </v-btn>
         <v-textarea class="mx-2" color="primary" type="text" clearable variant="solo" ref="input" v-model="userMessage"
-          placeholder="Ask Me Anything" hide-details @keydown="handleKeydown" no-resize :rows="inputRow"
+          placeholder="Ask Me 3GPP" hide-details @keydown="handleKeydown" no-resize :rows="inputRow"
           @focus="inputRow = 3" @blur="inputRow = 1">
 
         </v-textarea>
