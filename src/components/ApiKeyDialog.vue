@@ -71,7 +71,7 @@ const promptList = computed(() => {
           v-model="chatGPTStore.url"
           class="px-2 py-1"
           :placeholder="$t('chatgpt.config.urlPlaceholder')"
-          prepend-inner-icon="mdi-key"
+          prepend-inner-icon="mdi-web"
           autofocus
           clearable
           hide-details
@@ -83,13 +83,27 @@ const promptList = computed(() => {
         <v-label class="font-weight-medium mb-2 ml-2 mt-5">{{
           $t("chatgpt.config.model")
         }}</v-label>
-        <div style="width: 220px" class="flex ml-2 bg-grey-lighten-3 pa-2">
+        <div style="width: 97%" class="flex ml-2 bg-grey-lighten-3 pa-2">
           <v-btn
             :variant="chatGPTStore.model === 'gpt-3.5-turbo' ? 'flat' : 'text'"
             color="primary"
             class="flex-fill mr-3"
             @click="chatGPTStore.updateModel('gpt-3.5-turbo')"
             >GPT-3.5</v-btn
+          >
+          <v-btn
+            :variant="chatGPTStore.model === 'gpt-3.5-turbo-instruct' ? 'flat' : 'text'"
+            color="primary"
+            class="flex-fill mr-3"
+            @click="chatGPTStore.updateModel('gpt-3.5-turbo-instruct')"
+            >GPT-3.5-INSTR</v-btn
+          >
+          <v-btn
+            :variant="chatGPTStore.model === 'gpt-3.5-turbo-16k' ? 'flat' : 'text'"
+            color="primary"
+            class="flex-fill mr-3"
+            @click="chatGPTStore.updateModel('gpt-3.5-turbo-16k')"
+            >GPT-3.5-16K</v-btn
           >
           <v-btn
             :variant="chatGPTStore.model === 'gpt-4' ? 'flat' : 'text'"
