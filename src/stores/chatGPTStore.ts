@@ -22,6 +22,7 @@ export const useChatGPTStore = defineStore({
     getApiKey: (state) => state.apiKey,
     getUrl: (state) => state.url || "https://api.openai.com",
     getContext: (state) => state.context,
+    getModel: (state) => state.model || "gpt-3.5-turbo",
   },
   actions: {
     updatePropmpt() {},
