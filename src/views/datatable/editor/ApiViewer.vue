@@ -106,9 +106,12 @@ const onSearch = (Items, Key) => {
       </v-card>
     </transition>
   </teleport>
-  <v-container class="bg-white">
-    <div id="swagger-ui">
+  <v-container>
+  <v-card class="bg-white">
+    <div id="swagger-ui" >
     </div>
+  </v-card>
+    
   </v-container>
 </template>
 
