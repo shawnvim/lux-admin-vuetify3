@@ -116,7 +116,7 @@ const data_vdb = ref([
         </div>
       </v-toolbar-title>
       <v-row class="ma-5">
-        <v-col cols="12" md="4" xl="10">
+        <v-col cols="12" md="4">
           <div v-for="faq in data_emb" :id="faq.id" :key="faq.id">
             <div id="#general" class="text-subtitle-2 my-5 ml-2">
               {{ faq.title }}
@@ -147,7 +147,7 @@ const data_vdb = ref([
         </div>
       </v-toolbar-title>
       <v-row class="ma-5">
-        <v-col cols="12" md="4" xl="10">
+        <v-col cols="12" md="4">
           <div v-for="faq in data_vdb" :id="faq.id" :key="faq.id">
             <div id="#general" class="text-subtitle-2 my-5 ml-2">
               {{ faq.title }}
