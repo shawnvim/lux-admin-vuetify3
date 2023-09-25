@@ -13,7 +13,7 @@ export const useChatGPTStore = defineStore({
 
   persist: {
     enabled: true,
-    strategies: [{ storage: localStorage, paths: ["propmpt"] }],
+    strategies: [{ storage: localStorage, paths: ["apiKey"] }],
   },
 
   getters: {
