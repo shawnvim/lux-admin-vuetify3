@@ -152,14 +152,9 @@ const handleSelection = () => {
       :items="items" item-title="name" item-value="path" v-model="select" return-object>
     </v-select>
     <v-label></v-label>
-    
-
-    
-   
-    <HtmlPanel :url="select" @click=handleClick 
-    @mouseup=handleSelection
-    ref="sectionRef"/>
-  
+    <v-card>
+      <HtmlPanel class="ma-10" :url="select" @click=handleClick @mouseup=handleSelection ref="sectionRef" />
+    </v-card>
 
   </v-container>
 </template>
