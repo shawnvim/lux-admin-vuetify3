@@ -1,7 +1,6 @@
 <template>
-    <div class="h-full bg-white d-flex align-center justify-center" id="shadowParent">
-        <div class="vhtml" ref="shadowHost">
-
+    <div class="parent d-flex align-center justify-center" id="shadowParent">
+        <div class="child" ref="shadowHost">
         </div>
     </div>
 </template>
@@ -98,4 +97,13 @@ defineExpose({ removeHtmlStyle, loading });
 </script>
 
 
-<style scoped></style>
+<style scoped>
+.parent{
+    overflow: auto;
+    scrollbar-width: thin;
+}
+.child{
+    max-width: 100%;
+}
+
+</style>
