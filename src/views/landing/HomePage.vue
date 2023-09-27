@@ -5,6 +5,7 @@ import "md-editor-v3/lib/style.css";
 
 import Card1 from "./card/components/Card_home_ow.vue";
 import Card2 from "./card/components/Card_home_ui.vue";
+import CardList from "./card/components/Card_list.vue";
 
 
 const data_emb = ref([
@@ -60,6 +61,27 @@ const data_vdb = ref([
           "Storage is the bone of the system, responsible for data persistence. It comprises meta storage, log broker, and object storage.",
       },
     ],
+  },
+]);
+
+const data_list = ref([
+  {
+    icon: "mdi-refresh-auto",
+    title: "Automations - Github Actions",
+    content:
+      "CI/CD, build, push and publich your Container Image automatically.",
+  },
+  {
+    icon: "mdi-certificate",
+    title: "ACME - Automatic Certificate Management Environment",
+    content:
+      "Support ACME protocol which is a communications protocol for automating interactions between certificate authorities and their users' servers, allowing the automated deployment of public key infrastructure at very low cost. ",
+  },
+  {
+    icon: "mdi-lan-connect",
+    title: "HTTP3 - QUIC over UDP",
+    content:
+      "HTTP/3 with QUIC native support by NGINX, embrace the new standard. ",
   },
 ]);
 
@@ -194,50 +216,7 @@ const data_vdb = ref([
       </v-toolbar-title>
       <v-row class="ma-10">
         <v-sheet elevation="0" height="100%">
-          <v-card color="#F2F5F8" class="px-5 py-10 mb-10 d-flex align-center">
-            <v-card class="pa-5 mr-5 d-flex align-center justify-center">
-              <v-icon color="primary">mdi-refresh-auto</v-icon>
-            </v-card>
-
-            <div class="flex-fill">
-              <h3>Automations - Github Actions</h3>
-              <p>
-              CI/CD, build, push and publich your Container Image automatically.
-              </p>
-            </div>
-
-          </v-card>
-
-          <v-card color="#F2F5F8" class="px-5 py-10 mb-10 d-flex align-center">
-            <v-card class="pa-5 mr-5 d-flex align-center justify-center">
-              <v-icon color="primary">mdi-certificate</v-icon>
-            </v-card>
-
-            <div class="flex-fill">
-              <h3>ACME - Automatic Certificate Management Environment</h3>
-              <p>
-                Support ACME protocol which is a communications protocol for automating interactions between certificate authorities and their users' servers, allowing the automated deployment of public key infrastructure at very low cost.
-              </p>
-            </div>
-
-          </v-card>
-
-          
-
-          <v-card color="#F2F5F8" class="px-5 py-10 mb-10 d-flex align-center">
-            <v-card class="pa-5 mr-5 d-flex align-center justify-center">
-              <v-icon color="primary">mdi-lan-connect</v-icon>
-            </v-card>
-
-            <div class="flex-fill">
-              <h3>HTTP3 - QUIC over UDP</h3>
-              <p>
-                HTTP/3 with QUIC native support by NGINX, embrace the new standard.
-              </p>
-            </div>
-
-          </v-card>
-
+          <CardList v-for="data in data_list" :text="data" />
         </v-sheet>
       </v-row>
 
@@ -253,8 +232,8 @@ const data_vdb = ref([
 
 <style scoped>
 .pre-wrap {
-white-space: pre-wrap;
-flex-wrap: wrap;
+  white-space: pre-wrap;
+  flex-wrap: wrap;
 }
 </style>
 
