@@ -152,7 +152,17 @@ export default [
       requiresAuth: true,
       layout: "ui",
       category: "Data",
-      title: "API Viewer - 5GC CN",
+      title: "API Viewer - 3GPP 5GC CN",
+    },
+  },
+  {
+    path: "/data/asn-viewer",
+    component: () => import("@/views/datatable/editor/AsnViewer.vue"),
+    meta: {
+      requiresAuth: true,
+      layout: "ui",
+      category: "Data",
+      title: "ASN Viewer - 3GPP",
     },
   },
   // edit table
