@@ -53,4 +53,10 @@ export default [
     link: "/data/api-viewer",
     key: "menu.data.apiViewer",
   },
+  {
+    icon: "mdi-form-textbox",
+    text: "ASN Viewer",
+    link: "/data/asn-viewer",
+    key: "menu.data.asnViewer",
+  },
 ];
