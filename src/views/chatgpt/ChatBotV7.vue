@@ -13,6 +13,7 @@
   import { useChatGPTStore } from "@/stores/chatGPTStore";
   import ApiKeyDialog from "@/components/ApiKeyDialog.vue";
   import { client } from "@gradio/client";
+  import ConversationDialog from "@/components/ConversationDialog.vue";
 
   const snackbarStore = useSnackbarStore();
   const chatGPTStore = useChatGPTStore();
@@ -175,6 +176,11 @@
       content: countAndCompleteCodeBlocks(lastMessage.content),
     };
     messagesCopy[messagesCopy.length - 1] = updatedLastMessage;
+  if (messagesCopy.length >= 3)
+    conversation_text.value = {
+      title: messagesCopy[messagesCopy.length - 3]?.content,
+      content: messagesCopy[messagesCopy.length - 1]?.content,
+    };
     return messagesCopy;
   });
 
@@ -191,9 +197,16 @@
   };
 
   const inputRow = ref(1);
+
+  const conversation_text = ref({});
+
 </script>
 
+
+
 <template>
+  <ConversationDialog :text="conversation_text"/>
+
   <div class="chat-bot">
     <div class="messsage-area">
       <perfect-scrollbar v-if="messages.length > 0" class="message-container">
