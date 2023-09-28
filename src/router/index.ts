@@ -55,14 +55,22 @@ const router = createRouter({
   // process.env.NODE_ENV === "production"
 
   routes: routes,
+
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
+    if (to.path == from.path && to.hash) {
+      return {
+        el: to.hash,
+        //behavior: 'smooth',
+        top: 100
+        };
+    }
+    else if (savedPosition) {
       return savedPosition;
     } else if (to.hash) {
       return {
         el: to.hash,
-        behavior: 'smooth',
-        top: 200
+        //behavior: 'smooth',
+        top: 100
         };
     } else {
       return { top: 0 };
@@ -74,6 +82,7 @@ router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
   console.log("authStoreLoggedIn", authStore.isLoggedIn)
   console.log("requiresAuth", to.meta.requiresAuth)
+  console.log("HistoryState", to, from, next)
   if (to.meta.requiresAuth && !authStore.isLoggedIn) {
     next({ path: "/", replace: true ,force:true});
   } else {
