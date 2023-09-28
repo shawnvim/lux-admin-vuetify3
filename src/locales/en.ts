@@ -135,6 +135,7 @@ export default {
       docsViewer: "Docs Viewer",
       htmlViewer: "HTML Viewer",
       apiViewer: "API Viewer",
+      asnViewer: "ASN Viewer",
       editTable: "Edit Table",
     },
     chatbot_v1: "ChatBot",
