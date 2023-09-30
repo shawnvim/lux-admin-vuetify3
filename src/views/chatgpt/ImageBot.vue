@@ -4,30 +4,20 @@
 * @Description: 
 -->
 <script setup lang="ts">
-import { getModelsApi } from "@/api/stableDiffusionApi";
+
 import ImageToImage from "./SDComponents/ImageToImage.vue";
 import TextToImage from "./SDComponents/TextToImage.vue";
-import { useStableDiffusionStore } from "@/stores/stableDiffusionStore";
-const sdStore = useStableDiffusionStore();
-
-const listModels = async () => {
-  const res = await getModelsApi();
-  const models = res.data.map((item) => item.model_name);
-  sdStore.updateModelList(models);
-};
-
-onMounted(() => {
-  listModels();
-});
+import { useOpenaiStore } from "@/stores/openaiStore";
+const openaiStore = useOpenaiStore();
 
 const panelTab = ref("textToImage");
 </script>
 
 <template>
-  <v-container class="h-full">
-    <v-row class="h-full">
-      <v-col cols="12" md="6">
-        <v-card class="h-full">
+  <v-container>
+    <v-row>
+      <v-col cols="12" md="5">
+        <v-card>
           <v-toolbar color="primary">
             <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
@@ -46,7 +36,7 @@ const panelTab = ref("textToImage");
             <template v-slot:extension>
               <v-tabs fixed-tabs v-model="panelTab" bg-color="primary">
                 <v-tab value="textToImage">textToImage</v-tab>
-                <v-tab value="imgToImage">imgToImage</v-tab>
+                <!-- <v-tab value="imgToImage">imgToImage</v-tab> -->
               </v-tabs>
             </template>
           </v-toolbar>
@@ -57,28 +47,33 @@ const panelTab = ref("textToImage");
                 <TextToImage />
               </v-window-item>
 
+              <!--
+
               <v-window-item value="imgToImage">
                 <ImageToImage />
               </v-window-item>
+              -->
             </v-window>
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col cols="12" md="6">
-        <v-card class="h-full">
+      <v-col cols="12" md="7">
+        <v-card>
           <v-card-title> Image Panel </v-card-title>
           <v-divider></v-divider>
-          <v-card-text>
-            <v-img
-              v-for="img in sdStore.imgList"
-              width="300"
-              :src="img"
-            ></v-img>
-          </v-card-text>
+          <v-carousel height="83vh">
+            <v-carousel-item v-for="(img, i) in openaiStore.imgList" :key="i" :src="img.url"></v-carousel-item>
+          </v-carousel>
+
         </v-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.scroller {
+  height:100%;
+  overflow: auto;
+}
+</style>
