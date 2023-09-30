@@ -36,7 +36,7 @@ const imageGenerate = async () => {
     // Handle the successful response
     openaiStore.updateImgList(res.data.data);
     snackbarStore.showSuccessMessage("Image Generated, start loading");
-    console.log("ImageGenerationResult", res);
+    console.log("ImageGenerationResult", res.data.data[0].url, res);
   } catch (error) {
     console.log(error)
     // Handle the error
