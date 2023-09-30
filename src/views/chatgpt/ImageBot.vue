@@ -62,7 +62,7 @@ const panelTab = ref("textToImage");
           <v-card-title> Image Panel </v-card-title>
           <v-divider></v-divider>
           <v-carousel height="83vh">
-            <v-carousel-item v-for="(img, i) in openaiStore.imgList" :key="i" :src="img.url"></v-carousel-item>
+            <v-carousel-item v-for="(img, i) in openaiStore.imgList" :key="i" :lazy-src="img.url" :src="img.url"></v-carousel-item>
           </v-carousel>
 
         </v-card>
