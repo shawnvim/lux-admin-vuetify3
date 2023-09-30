@@ -11,4 +11,10 @@ export default [
     text: "Chatbot_V7",
     link: "/ai/chatbot_v7",
   },
+  {
+    icon: "mdi-robot-outline",
+    key: "menu.imagebot",
+    text: "Image Bot",
+    link: "/ai/image-bot",
+  },
 ];
