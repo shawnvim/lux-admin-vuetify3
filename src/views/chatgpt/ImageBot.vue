@@ -11,6 +11,7 @@ import { useOpenaiStore } from "@/stores/openaiStore";
 const openaiStore = useOpenaiStore();
 
 const panelTab = ref("textToImage");
+
 </script>
 
 <template>
@@ -61,8 +62,8 @@ const panelTab = ref("textToImage");
         <v-card>
           <v-card-title> Image Panel </v-card-title>
           <v-divider></v-divider>
-          <v-carousel height="83vh">
-            <v-carousel-item v-for="(img, i) in openaiStore.imgList" :key="i" :lazy-src="img.url" :src="img.url"></v-carousel-item>
+          <v-carousel height="84vh" hide-delimiter-background show-arrows="hover">
+            <v-carousel-item v-for="img in openaiStore.imgList" :key="new Date().getTime()" :lazy-src="img.url" :src="img.url"></v-carousel-item>
           </v-carousel>
 
         </v-card>
