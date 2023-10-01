@@ -10,6 +10,8 @@ import { useSnackbarStore } from "@/stores/snackbarStore";
 const snackbarStore = useSnackbarStore();
 const openaiStore = useOpenaiStore();
 
+const isLoading = ref(false);
+
 const params = reactive({
   prompt: "a white siamese cat",
   n: 1,
@@ -31,6 +33,7 @@ watch(value, (newValue) => {
 
 
 const imageGenerate = async () => {
+  isLoading.value = true;
   try {
     const res = await imageGenerationApi(params);
     // Handle the successful response
@@ -41,6 +44,8 @@ const imageGenerate = async () => {
     console.log(error)
     // Handle the error
     snackbarStore.showErrorMessage(error.message);
+  } finally {
+    isLoading.value = false;
   }
 
 };
@@ -63,7 +68,8 @@ const imageGenerate = async () => {
       <v-slider v-model="value" :max="2" step="1" color="primary">
       </v-slider>
 
-      <v-btn size="x-large" color="primary" block @click="imageGenerate">Generate</v-btn>
+      <v-btn size="x-large" color="primary" block
+      @click="imageGenerate" :loading="isLoading">Generate</v-btn>
     </v-card-text>
   </v-card>
 </template>
