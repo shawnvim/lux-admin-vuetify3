@@ -124,7 +124,16 @@ const data_list = ref([
         </div>
       </v-toolbar-title>
 
-      <img src="@/assets/images/homepage/architecture.svg" />
+      <v-dialog width="600" max-width="60vw" >
+        <template v-slot:activator="{ props }">
+          <img v-bind="props" src="@/assets/images/homepage/architecture.svg" />
+        </template>
+        <template v-slot:default="{ isActive }">
+          <v-card>
+            <img @click="isActive.value = false" src="@/assets/images/homepage/three_tier.svg" />
+          </v-card>
+        </template>
+      </v-dialog>
 
       <v-divider></v-divider>
       <br>
