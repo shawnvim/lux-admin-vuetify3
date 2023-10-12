@@ -73,7 +73,7 @@ const sendMessage = async () => {
 
     messages.value.push({
       name: "3GPP_5G_Assistent",
-      content: `${context}`,
+      content: `Context: ${context}`,
       role: "function",
     });
 
