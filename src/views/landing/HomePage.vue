@@ -159,9 +159,20 @@ const data_list = ref([
           </div>
         </v-col>
         <v-col cols="12" md="8">
-          <v-card class="h-full" style="border-radius: 8px">
-            <img src="@/assets/images/homepage/text_embedding.svg" />
-          </v-card>
+ 
+
+        <v-card class="h-full" style="border-radius: 8px">
+          <v-dialog width="750" max-width="60vw">
+            <template v-slot:activator="{ props }">
+              <img v-bind="props" src="@/assets/images/homepage/text_embedding.svg" />
+            </template>
+            <template v-slot:default="{ isActive }">
+            <v-card>
+                <img class = "ma-10" @click="isActive.value = false" src="@/assets/images/homepage/uml.svg" />
+              </v-card>
+            </template>
+          </v-dialog>
+        </v-card>
 
         </v-col>
       </v-row>
